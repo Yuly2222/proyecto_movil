@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_movil">
         <activity
+            android:name=".Registro"
+            android:exported="false" />
+        <activity
+            android:name=".Bienvenida"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
     </application>
