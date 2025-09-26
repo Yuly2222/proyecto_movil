@@ -33,6 +33,7 @@
             android:background="@drawable/bg_card">
 
             <ImageView
+                android:id="@+id/comunicados"
                 android:layout_width="103dp"
                 android:layout_height="92dp"
                 android:src="@drawable/anuncio" />
@@ -40,52 +41,40 @@
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="Lorem Ipsum"
-             android:textColor="@android:color/primary_text_dark"
+             android:text="Comunicados"
+             android:textColor="@color/textSecondary"
              android:textStyle="bold"
              android:layout_marginTop="8dp"/>
 
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="2/5"
-             android:textColor="@android:color/white"
-             android:textSize="12sp"/>
      </LinearLayout>
 
      <!-- Tarjeta 2  -->
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="180dp"
-        android:layout_row="0"
-        android:layout_column="1"
-        android:layout_columnWeight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="12dp"
-        android:background="@drawable/bg_card">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="12dp"
+            android:background="@drawable/bg_card">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp" />
-        <!--     android:src="@drawable/ic_science" -->
+            <ImageView
+                android:id="@+id/calendario"
+                android:layout_width="103dp"
+                android:layout_height="92dp"
+                android:src="@drawable/calendario" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lorem Ipsum"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calendario"
+                android:textColor="@color/textSecondary"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2/5"
-            android:textColor="@android:color/white"
-            android:textSize="12sp"/>
         </LinearLayout>
-
         <!-- Tarjeta 3  -->
         <LinearLayout
             android:layout_width="0dp"
@@ -99,24 +88,19 @@
             android:background="@drawable/bg_card">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
-            <!--     android:src="@drawable/ic_science" -->
+                android:id="@+id/notas"
+                android:layout_width="103dp"
+                android:layout_height="92dp"
+                android:src="@drawable/notas" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lorem Ipsum"
-                android:textColor="@android:color/white"
+                android:text="Notas"
+                android:textColor="@color/textSecondary"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2/5"
-                android:textColor="@android:color/white"
-                android:textSize="12sp"/>
         </LinearLayout>
 
         <!-- Tarjeta 4  -->
@@ -132,24 +116,19 @@
             android:background="@drawable/bg_card">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"/>
-            <!--     android:src="@drawable/ic_science" -->
+                android:id="@+id/tareas"
+                android:layout_width="103dp"
+                android:layout_height="92dp"
+                android:src="@drawable/tareas" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lorem Ipsum"
-                android:textColor="@android:color/white"
+                android:text="Tareas"
+                android:textColor="@color/textSecondary"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2/5"
-                android:textColor="@android:color/white"
-                android:textSize="12sp"/>
         </LinearLayout>
 
         <!-- Tarjeta 5  -->
@@ -165,24 +144,19 @@
             android:background="@drawable/bg_card">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
-            <!--     android:src="@drawable/ic_science" -->
+                android:id="@+id/carnet"
+                android:layout_width="103dp"
+                android:layout_height="92dp"
+                android:src="@drawable/carnet" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lorem Ipsum"
-                android:textColor="@android:color/white"
+                android:text="Carnet"
+                android:textColor="@color/textSecondary"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2/5"
-                android:textColor="@android:color/white"
-                android:textSize="12sp"/>
         </LinearLayout>
 
         <!-- Tarjeta 6  -->
@@ -198,24 +172,19 @@
             android:background="@drawable/bg_card">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
-            <!--     android:src="@drawable/ic_science" -->
+                android:id="@+id/datospersonales"
+                android:layout_width="103dp"
+                android:layout_height="92dp"
+                android:src="@drawable/usuario" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lorem Ipsum"
-                android:textColor="@android:color/white"
+                android:text="Datos personales"
+                android:textColor="@color/textSecondary"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2/5"
-                android:textColor="@android:color/white"
-                android:textSize="12sp"/>
         </LinearLayout>
 
         <!-- Agrega más tarjetas con la misma estructura -->

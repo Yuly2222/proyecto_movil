@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_movil">
         <activity
-            android:name=".Inicio"
+            android:name=".InicioEst"
             android:exported="false" />
         <activity
             android:name=".Registro"
