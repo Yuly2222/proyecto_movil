@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondo"
+    android:padding="16dp">
+
+    <!-- Título simple -->
+    <TextView
+        android:id="@+id/tvTituloTareas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textPrimary"
+        android:text="Tareas"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp" />
+
+    <!-- Filtros: Todas | Pendientes | Realizadas -->
+    <RadioGroup
+        android:id="@+id/rgFiltroTareas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbTodas"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/bg_card"
+            android:text="Todas"
+            android:textStyle="bold"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/rbPendientes"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/bg_card"
+            android:text="Pendientes"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/rbRealizadas"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/bg_card"
+            android:text="Realizadas"
+            android:textStyle="bold" />
+    </RadioGroup>
+    <include layout="@layout/bottom_navigation_view"/>
+
+</LinearLayout>

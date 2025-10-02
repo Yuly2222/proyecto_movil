@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Registro de Usuario"
-            android:textColor="@color/white"
+            android:textColor="@color/textPrimary"
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_marginBottom="24dp" />
@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:hint="Nombre"
             android:inputType="textPersonName"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/textColor"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textSecondary"
             android:drawableStart="@android:drawable/ic_menu_edit"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
@@ -40,8 +40,8 @@
             android:layout_height="wrap_content"
             android:hint="Apellido"
             android:inputType="textPersonName"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/textColor"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textSecondary"
             android:drawableStart="@android:drawable/ic_menu_edit"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
@@ -51,8 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/textColor"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textSecondary"
             android:padding="12dp" />
 
         <EditText
@@ -61,8 +61,8 @@
             android:layout_height="wrap_content"
             android:hint="Número de documento"
             android:inputType="number"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/textColor"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textSecondary"
             android:drawableStart="@android:drawable/ic_menu_edit"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
@@ -73,8 +73,8 @@
             android:layout_height="wrap_content"
             android:hint="Telefono"
             android:inputType="phone"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/textColor"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textSecondary"
             android:drawableStart="@android:drawable/ic_menu_call"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
@@ -85,8 +85,8 @@
             android:layout_height="wrap_content"
             android:hint="Dirección"
             android:inputType="textPostalAddress"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/textColor"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textSecondary"
             android:drawableStart="@android:drawable/ic_menu_mylocation"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
@@ -97,8 +97,8 @@
             android:layout_height="wrap_content"
             android:hint="Correo Electrónico"
             android:inputType="textEmailAddress"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/textColor"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textSecondary"
             android:drawableStart="@android:drawable/ic_dialog_email"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
@@ -109,8 +109,8 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/textColor"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textSecondary"
             android:drawableStart="@android:drawable/ic_lock_idle_lock"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
@@ -120,8 +120,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/textColor"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textSecondary"
             android:padding="12dp" />
 
         <Button
@@ -130,7 +130,7 @@
             android:layout_height="wrap_content"
             android:text="Guardar"
             android:textColor="@android:color/white"
-            android:backgroundTint="@color/orange"
+            android:backgroundTint="@color/accentOrange"
             android:layout_marginBottom="12dp"/>
 
 

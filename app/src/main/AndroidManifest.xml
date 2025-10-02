@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_movil" >
         <activity
+            android:name=".Tareas"
+            android:exported="false"
+            android:theme="@style/Theme.Proyecto_movil" />
+        <activity
             android:name=".Calendario"
             android:exported="false" />
         <activity
