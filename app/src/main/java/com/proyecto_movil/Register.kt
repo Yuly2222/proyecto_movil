@@ -1,19 +1,20 @@
 package com.proyecto_movil
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
-class Registro : AppCompatActivity() {
+class Register : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registro)
+        setContentView(R.layout.activity_register)
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseDatabase.getInstance()
@@ -28,12 +29,20 @@ class Registro : AppCompatActivity() {
         val editPassword = findViewById<EditText>(R.id.editPassword)
         val spinnerTipoUsuario = findViewById<Spinner>(R.id.spinnerTipoUsuario)
         val btnSave = findViewById<Button>(R.id.btnSave)
+        val txtVolver = findViewById<TextView>(R.id.txtVolver)
 
-        val tiposDoc = arrayOf("CC", "TI", "CE", "Pasaporte")
-        spinnerTipoDocumento.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, tiposDoc)
+        // Arrays con opción inicial
+        val tiposDoc = arrayOf("Seleccione tipo de documento", "CC", "TI", "CE", "Pasaporte")
+        val tiposUsuario = arrayOf("Seleccione tipo de usuario", "Estudiante", "Profesor", "Acudiente", "Admin")
 
-        val tiposUsuario = arrayOf("Estudiante", "Profesor", "Acudiente", "Admin")
-        spinnerTipoUsuario.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, tiposUsuario)
+        configurarSpinner(spinnerTipoDocumento, tiposDoc)
+        configurarSpinner(spinnerTipoUsuario, tiposUsuario)
+
+        txtVolver.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         btnSave.setOnClickListener {
             val nombre = editNombre.text.toString().trim()
@@ -58,6 +67,16 @@ class Registro : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if (tipoDoc == "Seleccione tipo de documento") {
+                Toast.makeText(this, "Debes seleccionar un tipo de documento", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (tipoUsuario == "Seleccione tipo de usuario") {
+                Toast.makeText(this, "Debes seleccionar un tipo de usuario", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             // Crear usuario en FirebaseAuth
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -76,7 +95,6 @@ class Registro : AppCompatActivity() {
                         )
 
                         if (uid != null) {
-                            // Guardar en Realtime Database en la colección "usuarios"
                             db.reference.child("usuarios").child(uid)
                                 .setValue(usuario)
                                 .addOnSuccessListener {
@@ -102,5 +120,28 @@ class Registro : AppCompatActivity() {
                     }
                 }
         }
+    }
+
+    // Método reutilizable para configurar cualquier Spinner
+    private fun configurarSpinner(spinner: Spinner, items: Array<String>) {
+        val adapter = object : ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_spinner_item,
+            items
+        ) {
+            override fun getView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
+                val view = super.getView(position, convertView, parent) as TextView
+                view.setTextColor(getColor(android.R.color.white)) // Texto blanco cuando está seleccionado
+                return view
+            }
+
+            override fun getDropDownView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
+                val view = super.getDropDownView(position, convertView, parent) as TextView
+                view.setTextColor(getColor(android.R.color.black)) // Texto negro en el menú desplegable
+                return view
+            }
+        }
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
     }
 }
