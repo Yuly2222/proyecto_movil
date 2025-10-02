@@ -14,7 +14,7 @@
     <!-- Grid con 2 columnas -->
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:columnCount="2"
         android:rowCount="3"
         android:alignmentMode="alignMargins"
@@ -189,5 +189,5 @@
 
         <!-- Agrega más tarjetas con la misma estructura -->
     </GridLayout>
-
+    <include layout="@layout/bottom_navigation_view"/>
 </LinearLayout>
