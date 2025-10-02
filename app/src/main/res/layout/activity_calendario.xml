@@ -1,11 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Calendario">
+    android:orientation="vertical"
+    android:background="#F5F7FB">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+  <!-- HEADER degradado -->
+  <FrameLayout
+      android:id="@+id/headerCalendario"
+      android:layout_width="match_parent"
+      android:layout_height="145dp"
+      android:background="@drawable/fondo">
+
+    <!-- Toolbar simple (texto blanco centrado) -->
+    <TextView
+        android:id="@+id/tvHeaderTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Calendario"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+  </FrameLayout>
+
+  <!-- Tarjeta con CalendarView -->
+  <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginTop="-30dp"
+      android:elevation="6dp"
+      app:cardCornerRadius="16dp">
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:firstDayOfWeek="2"
+        android:padding="8dp" />
+  </androidx.cardview.widget.CardView>
+
+  <!-- Hoja inferior blanca con esquinas redondeadas -->
+  <LinearLayout
+      android:id="@+id/sheetEventos"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:layout_marginTop="12dp"
+      android:background="@drawable/bg_card"
+      android:orientation="vertical"
+      android:paddingTop="8dp">
+
+    <TextView
+        android:id="@+id/tvEventosTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Events"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="4dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvEventos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="12dp"/>
+  </LinearLayout>
+</LinearLayout>

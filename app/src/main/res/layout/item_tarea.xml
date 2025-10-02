@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemTareaRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card"
+        android:padding="12dp"
+        android:orientation="horizontal"
+        android:elevation="2dp">
+
+        <ImageView
+            android:id="@+id/ivIconoTarea"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/tareas"
+            android:contentDescription="Icono tarea" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="12dp">
+
+            <TextView
+                android:id="@+id/tvTituloTarea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Título de la tarea"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvDescripcionTarea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descripción corta de la tarea..."
+                android:textSize="13sp"
+                android:textColor="@android:color/darker_gray" />
+
+            <!-- Barra de progreso opcional -->
+            <ProgressBar
+                android:id="@+id/progresoTarea"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="8dp"
+                android:progress="40"
+                android:max="100" />
+        </LinearLayout>
+
+    </LinearLayout> <!-- This was missing -->
+</LinearLayout> <!-- This was also missing -->
