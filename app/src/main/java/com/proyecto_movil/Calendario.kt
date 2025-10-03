@@ -12,7 +12,7 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 
-class Calendario : AppCompatActivity() {
+class Calendario : BaseActivity() {
 
     private lateinit var rv: RecyclerView
     private lateinit var adapter: EventoAdapter
@@ -28,6 +28,9 @@ class Calendario : AppCompatActivity() {
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        setContentView(R.layout.bottom_navigation_view)
+        setupBottomNav(R.id.nav_calendar)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendario)
 

@@ -9,7 +9,7 @@ import java.util.Calendar
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.bottom_navigation_view)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                R.id.nav_profile -> {
-                    startActivity(Intent(this, ProfileActivity::class.java))
+                    startActivity(Intent(this, ProfileActivityEst::class.java))
                     true
                 }
                 else -> false

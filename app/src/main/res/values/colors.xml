@@ -2,7 +2,16 @@
     <!-- Fondo con degradado -->
     <color name="gradTopPurple">#5B47F1</color>   <!-- Morado en la parte superior -->
     <color name="gradMidBlue">#3F6FDB</color>    <!-- Azul intermedio (transición) -->
-    <color name="gradBottomBlue">#39B3E6</color> <!-- Azul celeste en la parte inferior -->
+    <color name="gradBottomBlue">#39B3E6</color>
+    <!-- Azul celeste en la parte inferior -->
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#39B3E6</color>
 
     <!-- Botón principal -->
     <color name="accentOrange">#FF6B35</color>   <!-- Botón "GET STARTED" -->

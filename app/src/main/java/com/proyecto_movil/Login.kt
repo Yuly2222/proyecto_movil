@@ -1,7 +1,6 @@
 package com.proyecto_movil
 
 import android.content.Intent
-import android.net.wifi.hotspot2.pps.HomeSp
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -51,11 +50,13 @@ class Login : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val uid = auth.currentUser?.uid
                         if (uid != null) {
-                            // Leer el nombre desde Realtime Database
+                            // Leer nombre y tipoUsuario desde Realtime Database
                             db.reference.child("usuarios").child(uid)
                                 .get()
                                 .addOnSuccessListener { snapshot ->
                                     val nombre = snapshot.child("nombre")
+                                        .getValue(String::class.java)
+                                    val tipoUsuario = snapshot.child("tipoUsuario")
                                         .getValue(String::class.java)
 
                                     if (!nombre.isNullOrEmpty()) {
@@ -71,7 +72,13 @@ class Login : AppCompatActivity() {
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     }
-                                    val intent = Intent(this, MainActivity::class.java)
+
+                                    // Redirigir según el tipo de usuario
+                                    val intent = if (tipoUsuario == "Estudiante") {
+                                        Intent(this, InicioEst::class.java)
+                                    } else {
+                                        Intent(this, InicioProf::class.java)
+                                    }
                                     startActivity(intent)
                                     finish()
                                 }

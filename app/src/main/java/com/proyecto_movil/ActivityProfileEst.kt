@@ -11,7 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class ProfileActivity : AppCompatActivity() {
+class ProfileActivityEst : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: DatabaseReference
@@ -26,6 +26,9 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var btnLogout: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setContentView(R.layout.bottom_navigation_view)
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_est)
 
@@ -68,7 +71,7 @@ class ProfileActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@ProfileActivity,
+                Toast.makeText(this@ProfileActivityEst,
                     "Error cargando perfil: ${error.message}", Toast.LENGTH_SHORT).show()
                 // Fallback mínimo a Auth si falla DB
                 tvName.text = user.displayName ?: "Usuario"
@@ -90,7 +93,7 @@ class ProfileActivity : AppCompatActivity() {
         bottom.selectedItemId = R.id.nav_profile
         bottom.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_home -> { startActivity(Intent(this, MainActivity::class.java)); true }
+                R.id.nav_home -> { startActivity(Intent(this, InicioEst::class.java)); true }
                 R.id.nav_courses -> { startActivity(Intent(this, ItemMateriaNotasActivity::class.java)); true }
                 R.id.nav_calendar -> { startActivity(Intent(this, Calendario::class.java)); true }
                 R.id.nav_notifications -> { startActivity(Intent(this, Comunicados::class.java)); true }
