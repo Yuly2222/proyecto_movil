@@ -7,12 +7,34 @@
     android:padding="24dp">
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="vertical">
 
+        <!-- Texto Volver arriba a la izquierda -->
+        <TextView
+            android:id="@+id/txtVolver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:textColor="@color/textPrimary"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:gravity="start"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/icono"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="Logo" />
+
+
+        <!-- Título centrado -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +42,10 @@
             android:textColor="@color/textPrimary"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
+            />
+
 
         <EditText
             android:id="@+id/editNombre"
@@ -29,8 +54,10 @@
             android:hint="Nombre"
             android:inputType="textPersonName"
             android:backgroundTint="@color/textPrimary"
-            android:textColor="@color/textSecondary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
             android:drawableStart="@android:drawable/ic_menu_edit"
+            android:drawablePadding="16dp"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
@@ -41,8 +68,10 @@
             android:hint="Apellido"
             android:inputType="textPersonName"
             android:backgroundTint="@color/textPrimary"
-            android:textColor="@color/textSecondary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
             android:drawableStart="@android:drawable/ic_menu_edit"
+            android:drawablePadding="16dp"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
@@ -52,7 +81,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:backgroundTint="@color/textPrimary"
-            android:textColor="@color/textSecondary"
             android:padding="12dp" />
 
         <EditText
@@ -62,8 +90,10 @@
             android:hint="Número de documento"
             android:inputType="number"
             android:backgroundTint="@color/textPrimary"
-            android:textColor="@color/textSecondary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
             android:drawableStart="@android:drawable/ic_menu_edit"
+            android:drawablePadding="16dp"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
@@ -74,8 +104,10 @@
             android:hint="Telefono"
             android:inputType="phone"
             android:backgroundTint="@color/textPrimary"
-            android:textColor="@color/textSecondary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
             android:drawableStart="@android:drawable/ic_menu_call"
+            android:drawablePadding="16dp"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
@@ -86,8 +118,10 @@
             android:hint="Dirección"
             android:inputType="textPostalAddress"
             android:backgroundTint="@color/textPrimary"
-            android:textColor="@color/textSecondary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
             android:drawableStart="@android:drawable/ic_menu_mylocation"
+            android:drawablePadding="16dp"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
@@ -98,8 +132,10 @@
             android:hint="Correo Electrónico"
             android:inputType="textEmailAddress"
             android:backgroundTint="@color/textPrimary"
-            android:textColor="@color/textSecondary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
             android:drawableStart="@android:drawable/ic_dialog_email"
+            android:drawablePadding="16dp"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
@@ -110,7 +146,8 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:backgroundTint="@color/textPrimary"
-            android:textColor="@color/textSecondary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
             android:drawableStart="@android:drawable/ic_lock_idle_lock"
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
@@ -121,19 +158,15 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:backgroundTint="@color/textPrimary"
-            android:textColor="@color/textSecondary"
             android:padding="12dp" />
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar"
+            android:text="Registrarse"
             android:textColor="@android:color/white"
             android:backgroundTint="@color/accentOrange"
             android:layout_marginBottom="12dp"/>
-
-
-
     </LinearLayout>
 </ScrollView>
