@@ -2,7 +2,6 @@
 package com.proyecto_movil
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -27,7 +26,7 @@ abstract class BaseActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_courses -> {
-                    startActivity(Intent(this, ItemMateriaNotasActivity::class.java).apply {
+                    startActivity(Intent(this, NotasEst::class.java).apply {
                         addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
                     })
                     true

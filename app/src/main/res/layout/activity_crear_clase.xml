@@ -15,68 +15,95 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Volver -->
         <TextView
             android:id="@+id/tvVolver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Volver"
+            android:text="← Volver"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             android:clickable="true"
             android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            android:padding="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="50dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
 
-        <!-- 🔹 Título -->
+        <!-- Título principal -->
         <TextView
             android:id="@+id/tituloCrearClase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Crear nueva clase"
             android:textColor="@color/white"
-            android:textSize="26sp"
+            android:textSize="32sp"
             android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvVolver"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="30dp" />
 
-        <!-- 🔹 Campo: Nombre -->
-        <EditText
-            android:id="@+id/editNombreClase"
+        <!-- Campo: Nombre -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNombreClase"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Nombre de la clase"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/white"
-            android:textColorHint="#BDBDBD"
-            android:inputType="textCapWords"
+            android:layout_marginTop="40dp"
             app:layout_constraintTop_toBottomOf="@id/tituloCrearClase"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="40dp" />
+            app:boxBackgroundMode="filled"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxBackgroundColor="@color/background">
 
-        <!-- 🔹 Campo: Descripción -->
-        <EditText
-            android:id="@+id/editDescripcion"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editNombreClase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre de la clase"
+                android:textColor="@color/white"
+                android:textColorHint="#BDBDBD"
+                android:inputType="textCapWords"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Campo: Descripción -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDescripcion"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Descripción de la clase"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/white"
-            android:textColorHint="#BDBDBD"
-            android:inputType="textCapSentences|textMultiLine"
-            android:minLines="3"
-            app:layout_constraintTop_toBottomOf="@id/editNombreClase"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tilNombreClase"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+            app:boxBackgroundMode="filled"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxBackgroundColor="@color/background">
 
-        <!-- 🔹 Botón Guardar -->
-        <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Descripción de la clase"
+                android:textColor="@color/white"
+                android:textColorHint="#BDBDBD"
+                android:inputType="textCapSentences|textMultiLine"
+                android:minLines="3"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Botón Guardar -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGuardarClase"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -84,13 +111,17 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:backgroundTint="@color/purple_500"
-            android:layout_marginTop="24dp"
-            android:padding="12dp"
+            android:layout_marginTop="32dp"
+            android:padding="16dp"
             android:fontFamily="sans-serif-medium"
-            app:layout_constraintTop_toBottomOf="@id/editDescripcion"
+            app:cornerRadius="24dp"
+            app:iconPadding="8dp"
+            app:iconTint="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tilDescripcion"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:elevation="6dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

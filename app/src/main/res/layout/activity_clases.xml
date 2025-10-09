@@ -15,39 +15,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- 🔹 Volver -->
+        <!-- Volver -->
         <TextView
             android:id="@+id/tvVolver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Volver"
+            android:text="← Volver"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             android:clickable="true"
             android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            android:padding="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"/>
 
-        <!-- 🔹 Título principal -->
+        <!-- Título principal -->
         <TextView
             android:id="@+id/tituloClases"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gestión de Clases"
             android:textColor="@color/white"
-            android:textSize="26sp"
+            android:textSize="32sp"
             android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvVolver"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="30dp" />
 
-        <!-- 🔹 Botón: Crear Nueva Clase -->
-        <Button
+        <!-- Botón: Crear Nueva Clase -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCrearClase"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -56,29 +59,35 @@
             android:textColor="@color/white"
             android:backgroundTint="@color/purple_500"
             android:layout_marginTop="40dp"
-            android:padding="12dp"
-            android:fontFamily="sans-serif-medium"
+            android:padding="16dp"
+            app:cornerRadius="24dp"
+            app:iconPadding="8dp"
+            app:iconTint="@color/white"
             app:layout_constraintTop_toBottomOf="@id/tituloClases"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:elevation="6dp" />
 
-        <!-- 🔹 Botón: Ver Clases Activas -->
-        <Button
+        <!-- Botón: Ver Clases Activas -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnVerActivas"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Ver Clases Activas"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:backgroundTint="@color/teal_700"
+            android:backgroundTint="@color/gradMidBlue"
             android:layout_marginTop="20dp"
-            android:padding="12dp"
-            android:fontFamily="sans-serif-medium"
+            android:padding="16dp"
+            app:cornerRadius="24dp"
+            app:iconPadding="8dp"
+            app:iconTint="@color/white"
             app:layout_constraintTop_toBottomOf="@id/btnCrearClase"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:elevation="6dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

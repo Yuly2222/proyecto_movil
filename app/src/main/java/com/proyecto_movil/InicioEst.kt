@@ -26,20 +26,17 @@ class InicioEst : AppCompatActivity() {
             startActivity(Intent(this, Calendario::class.java))
         }
 
+        // FIX: Change AdapterNotas to the correct Activity, e.g., NotasActivity
         val btnNotas = findViewById<ImageView>(R.id.notas)
         btnNotas.setOnClickListener {
-            startActivity(Intent(this, ItemMateriaNotasActivity::class.java))
+            // Replace AdapterNotas::class.java with your new activity
+            startActivity(Intent(this, NotasEst::class.java))
         }
 
         val btnTareas = findViewById<ImageView>(R.id.tareas)
         btnTareas.setOnClickListener {
-            startActivity(Intent(this, Tareas::class.java)) // Ajusta al nombre real de tu actividad
+            startActivity(Intent(this, Tareas::class.java))
         }
-
-        //val btnCarnet = findViewById<ImageView>(R.id.carnet)
-        //btnCarnet.setOnClickListener {
-            //startActivity(Intent(this, CarnetActivity::class.java)) // Ajusta si se llama distinto
-        //}
 
         val btnUsuario = findViewById<ImageView>(R.id.datospersonales)
         btnUsuario.setOnClickListener {
@@ -54,7 +51,8 @@ class InicioEst : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_home -> true
                 R.id.nav_courses -> {
-                    startActivity(Intent(this, ItemMateriaNotasActivity::class.java))
+                    // FIX: Also change it here
+                    startActivity(Intent(this, NotasEst::class.java))
                     true
                 }
                 R.id.nav_calendar -> {

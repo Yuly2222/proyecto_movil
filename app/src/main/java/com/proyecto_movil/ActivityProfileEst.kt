@@ -94,7 +94,7 @@ class ProfileActivityEst : AppCompatActivity() {
         bottom.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> { startActivity(Intent(this, InicioEst::class.java)); true }
-                R.id.nav_courses -> { startActivity(Intent(this, ItemMateriaNotasActivity::class.java)); true }
+                R.id.nav_courses -> { startActivity(Intent(this, NotasEst::class.java)); true }
                 R.id.nav_calendar -> { startActivity(Intent(this, Calendario::class.java)); true }
                 R.id.nav_notifications -> { startActivity(Intent(this, Comunicados::class.java)); true }
                 R.id.nav_profile -> true
