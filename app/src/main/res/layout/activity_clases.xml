@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollClases"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    android:padding="24dp"
+    android:overScrollMode="never"
+    tools:context=".Clases">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 🔹 Volver -->
+        <TextView
+            android:id="@+id/tvVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
+
+        <!-- 🔹 Título principal -->
+        <TextView
+            android:id="@+id/tituloClases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gestión de Clases"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp" />
+
+        <!-- 🔹 Botón: Crear Nueva Clase -->
+        <Button
+            android:id="@+id/btnCrearClase"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Crear Nueva Clase"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/purple_500"
+            android:layout_marginTop="40dp"
+            android:padding="12dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintTop_toBottomOf="@id/tituloClases"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" />
+
+        <!-- 🔹 Botón: Ver Clases Activas -->
+        <Button
+            android:id="@+id/btnVerActivas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Ver Clases Activas"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/teal_700"
+            android:layout_marginTop="20dp"
+            android:padding="12dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintTop_toBottomOf="@id/btnCrearClase"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

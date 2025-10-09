@@ -12,9 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_movil">
         <activity
+            android:name=".VerClasesActivas"
+            android:exported="false" />
+        <activity
+            android:name=".CrearClase"
+            android:exported="false" />
+        <activity
+            android:name=".Clases"
+            android:exported="false" />
+        <activity
             android:name=".ProfileActivityEst"
             android:exported="false" />
-
         <activity
             android:name=".Login"
             android:exported="true">
