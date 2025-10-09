@@ -119,7 +119,7 @@
                 android:id="@+id/Clases"
                 android:layout_width="103dp"
                 android:layout_height="92dp"
-                android:src="@drawable/tareas" />
+                android:src="@drawable/icono" />
 
             <TextView
                 android:layout_width="wrap_content"
