@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/fondo"
+    android:background="@drawable/gradient_bg"
     tools:context=".MainActivity">
 
     <!-- Grid con 2 columnas -->
