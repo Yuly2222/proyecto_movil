@@ -5,7 +5,7 @@
     android:id="@+id/scrollClases"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
+    android:background="@drawable/gradient_bg"
     android:padding="24dp"
     android:overScrollMode="never"
     tools:context=".Clases">

@@ -76,4 +76,12 @@
         android:paddingEnd="12dp"
         android:paddingBottom="12dp"/>
   </LinearLayout>
+  <!-- Barra de navegación inferior -->
+  <include
+      android:id="@+id/bottomNavInclude"
+      layout="@layout/bottom_navigation_view"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp" />
+
 </LinearLayout>

@@ -1,13 +1,11 @@
 package com.proyecto_movil
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.CalendarView
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -20,11 +18,9 @@ class Calendario : BaseActivity() {
 
     // Simulación de datos
     private val eventos = listOf(
-        // helper para convertir yyyy, m (1-12), d a epochDay
-        // usa LocalDate.of(2025, 10, 6).toEpochDay()
-        Evento(LocalDate.of(2025, 10, 6).toEpochDay(),  "Exposición Redes", "Edif. B, Aula 203", "08:00"),
-        Evento(LocalDate.of(2025, 10, 6).toEpochDay(),  "Entrega Parcial",  "Aula Virtual",      "23:59"),
-        Evento(LocalDate.of(2025, 10, 7).toEpochDay(),  "Reunión IEEE",      "Sala 4",            "16:00"),
+        Evento(LocalDate.of(2025, 10, 6).toEpochDay(), "Exposición Redes", "Edif. B, Aula 203", "08:00"),
+        Evento(LocalDate.of(2025, 10, 6).toEpochDay(), "Entrega Parcial", "Aula Virtual", "23:59"),
+        Evento(LocalDate.of(2025, 10, 7).toEpochDay(), "Reunión IEEE", "Sala 4", "16:00"),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +36,38 @@ class Calendario : BaseActivity() {
         adapter = EventoAdapter()
         rv.layoutManager = LinearLayoutManager(this)
         rv.adapter = adapter
+
+        // === Tu código de navegación inferior ===
+        val bottom = findViewById<BottomNavigationView>(R.id.bottomNav)
+        bottom.selectedItemId = R.id.nav_calendar
+
+        bottom.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this, InicioEst::class.java))
+                    true
+                }
+
+                R.id.nav_courses -> {
+                    startActivity(Intent(this, NotasEst::class.java))
+                    true
+                }
+
+                R.id.nav_calendar -> true
+                R.id.nav_notifications -> {
+                    startActivity(Intent(this, Comunicados::class.java))
+                    true
+                }
+
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileActivityEst::class.java))
+                    true
+                }
+
+                else -> false
+            }
+        }
+        // =======================================
 
         // 1) Cargar eventos del día mostrado inicialmente
         val initialDay = millisToEpochDay(calendarView.date)
