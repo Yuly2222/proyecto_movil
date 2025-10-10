@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +21,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_courses -> {
-                    startActivity(Intent(this, ItemMateriaNotasActivity::class.java))
+                    startActivity(Intent(this, NotasEst::class.java))
                     true
                 }
                 R.id.nav_calendar -> {

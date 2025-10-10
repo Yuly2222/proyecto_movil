@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:text="GET STARTED"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/accentOrange"
+        android:backgroundTint="@color/purple_200"
         android:textColor="@android:color/white"
         android:layout_marginBottom="40dp"/>
 </RelativeLayout>

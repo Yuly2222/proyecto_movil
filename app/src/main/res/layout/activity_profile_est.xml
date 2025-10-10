@@ -57,14 +57,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="16dp"/>
 
-            <Button
-                android:id="@+id/btnEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Editar perfil"
-                android:backgroundTint="@color/accentOrange"
-                android:textColor="@android:color/white"
-                android:layout_marginBottom="16dp"/>
 
             <!-- Tarjetas de opciones -->
             <LinearLayout
@@ -119,11 +111,20 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/accentOrange"
+                android:text="Editar perfil"
+                android:textColor="@android:color/white" />
+
+            <Button
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Cerrar sesión"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="0dp"
                 android:backgroundTint="@color/accentOrange"
                 android:textColor="@android:color/white"/>
         </LinearLayout>

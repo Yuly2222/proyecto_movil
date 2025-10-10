@@ -1,6 +1,9 @@
 package com.proyecto_movil
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,10 +14,12 @@ class Bienvenida : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_bienvenida)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val btnGetStarted = findViewById<Button>(R.id.btnGetStarted)
+
+        btnGetStarted.setOnClickListener {
+            val intent = Intent(this, Login::class.java) // O LoginActivity si ese es el nombre real
+            startActivity(intent)
         }
     }
 }
