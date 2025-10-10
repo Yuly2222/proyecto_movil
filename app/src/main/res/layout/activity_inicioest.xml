@@ -9,185 +9,259 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@drawable/gradient_bg"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
     <!-- Grid con 2 columnas -->
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:columnCount="2"
         android:rowCount="3"
         android:alignmentMode="alignMargins"
-        android:useDefaultMargins="true">
+        android:useDefaultMargins="true"
+        android:clipToPadding="false">
 
         <!-- Tarjeta 1 -->
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             android:layout_row="0"
             android:layout_column="0"
             android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp"
-            android:background="@drawable/bg_card">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true"
+            android:backgroundTint="@android:color/white">
 
-            <ImageView
-                android:id="@+id/comunicados"
-                android:layout_width="103dp"
-                android:layout_height="92dp"
-                android:src="@drawable/anuncio" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp"
+                android:paddingBottom="18dp"
+                android:foreground="?attr/selectableItemBackground">
 
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Comunicados"
-             android:textColor="@color/textSecondary"
-             android:textStyle="bold"
-             android:layout_marginTop="8dp"/>
+                <ImageView
+                    android:id="@+id/comunicados"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/anuncio" />
 
-     </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comunicados"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-     <!-- Tarjeta 2  -->
-        <LinearLayout
+        <!-- Tarjeta 2 -->
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             android:layout_row="0"
             android:layout_column="1"
             android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp"
-            android:background="@drawable/bg_card">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true"
+            android:backgroundTint="@android:color/white">
 
-            <ImageView
-                android:id="@+id/calendario"
-                android:layout_width="103dp"
-                android:layout_height="92dp"
-                android:src="@drawable/calendario" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp"
+                android:paddingBottom="18dp"
+                android:foreground="?attr/selectableItemBackground">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Calendario"
-                android:textColor="@color/textSecondary"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"/>
+                <ImageView
+                    android:id="@+id/calendario"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/calendario" />
 
-        </LinearLayout>
-        <!-- Tarjeta 3  -->
-        <LinearLayout
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calendario"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Tarjeta 3 -->
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             android:layout_row="1"
             android:layout_column="0"
             android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp"
-            android:background="@drawable/bg_card">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true"
+            android:backgroundTint="@android:color/white">
 
-            <ImageView
-                android:id="@+id/notas"
-                android:layout_width="103dp"
-                android:layout_height="92dp"
-                android:src="@drawable/notas" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp"
+                android:paddingBottom="18dp"
+                android:foreground="?attr/selectableItemBackground">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Notas"
-                android:textColor="@color/textSecondary"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"/>
+                <ImageView
+                    android:id="@+id/notas"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/notas" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notas"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        <!-- Tarjeta 4  -->
-        <LinearLayout
+        <!-- Tarjeta 4 -->
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             android:layout_row="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp"
-            android:background="@drawable/bg_card">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true"
+            android:backgroundTint="@android:color/white">
 
-            <ImageView
-                android:id="@+id/tareas"
-                android:layout_width="103dp"
-                android:layout_height="92dp"
-                android:src="@drawable/tareas" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp"
+                android:paddingBottom="18dp"
+                android:foreground="?attr/selectableItemBackground">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tareas"
-                android:textColor="@color/textSecondary"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"/>
+                <ImageView
+                    android:id="@+id/tareas"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/tareas" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tareas"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        <!-- Tarjeta 5  -->
-        <LinearLayout
+        <!-- Tarjeta 5 -->
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             android:layout_row="2"
             android:layout_column="0"
             android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp"
-            android:background="@drawable/bg_card">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true"
+            android:backgroundTint="@android:color/white">
 
-            <ImageView
-                android:id="@+id/carnet"
-                android:layout_width="103dp"
-                android:layout_height="92dp"
-                android:src="@drawable/carnet" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp"
+                android:paddingBottom="18dp"
+                android:foreground="?attr/selectableItemBackground">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Carnet"
-                android:textColor="@color/textSecondary"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"/>
+                <ImageView
+                    android:id="@+id/carnet"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/carnet" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Carnet"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        <!-- Tarjeta 6  -->
-        <LinearLayout
+        <!-- Tarjeta 6 -->
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             android:layout_row="2"
             android:layout_column="1"
             android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="12dp"
-            android:background="@drawable/bg_card">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true"
+            android:backgroundTint="@android:color/white">
 
-            <ImageView
-                android:id="@+id/datospersonales"
-                android:layout_width="103dp"
-                android:layout_height="92dp"
-                android:src="@drawable/usuario" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp"
+                android:paddingBottom="18dp"
+                android:foreground="?attr/selectableItemBackground">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Datos personales"
-                android:textColor="@color/textSecondary"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"/>
+                <ImageView
+                    android:id="@+id/datospersonales"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/usuario" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Datos personales"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-        <!-- Agrega más tarjetas con la misma estructura -->
     </GridLayout>
-    <include layout="@layout/bottom_navigation_view"/>
+
+    <!-- Barra de navegación inferior -->
+    <include
+        layout="@layout/bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
