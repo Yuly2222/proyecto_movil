@@ -3,6 +3,7 @@ package com.proyecto_movil
 import android.content.Intent
 import android.os.Bundle
 import android.widget.CalendarView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -10,7 +11,7 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 
-class Calendario : BaseActivity() {
+class Calendario : AppCompatActivity() {
 
     private lateinit var rv: RecyclerView
     private lateinit var adapter: EventoAdapter
@@ -25,8 +26,7 @@ class Calendario : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        setContentView(R.layout.bottom_navigation_view)
-        setupBottomNav(R.id.nav_calendar)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendario)
 
