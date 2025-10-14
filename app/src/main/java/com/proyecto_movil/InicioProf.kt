@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.widget.LinearLayout
+import androidx.cardview.widget.CardView
 
 class InicioProf : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,7 @@ class InicioProf : AppCompatActivity() {
         }
 
         // 🔹 Referencia al LinearLayout
-        val clasesLayout = findViewById<LinearLayout>(R.id.clasesLayout)
+        val clasesLayout = findViewById<CardView>(R.id.clasesLayout)
 
         // 🔹 Evento clic para abrir la actividad Clases
         clasesLayout.setOnClickListener {
