@@ -4,7 +4,7 @@
     android:id="@+id/itemComunicadoRoot"
     android:layout_width="match_parent"
     android:layout_height="72dp"
-    android:background="?attr/selectableItemBackground"
+    android:background="@drawable/bg_card"
     android:paddingStart="16dp"
     android:paddingEnd="12dp">
 
