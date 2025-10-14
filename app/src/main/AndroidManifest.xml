@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Proyecto_movil" >
+        <activity
+            android:name=".NotasItem"
+            android:exported="false"
+            android:theme="@style/Theme.Proyecto_movil" />
+        <activity
+            android:name=".NotasEst"
+            android:exported="false" />
+        <activity
+            android:name=".VerClasesActivas"
+            android:exported="false" />
+        <activity
+            android:name=".CrearClase"
+            android:exported="false" />
+        <activity
+            android:name=".Clases"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivityEst"
+            android:exported="false" />
+        <activity
+            android:name=".Bienvenida"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Registro"
+            android:exported="false" />
+        <activity
+            android:name=".AdapterNotas"
+            android:exported="false" />
+        <activity
+            android:name=".StudentDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ItemEventoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ItemTareaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InicioProf"
+            android:exported="false" />
+        <activity
+            android:name=".Tareas"
+            android:exported="false"
+            android:theme="@style/Theme.Proyecto_movil" />
+        <activity
+            android:name=".Calendario"
+            android:exported="false" />
+        <activity
+            android:name=".Comunicados"
+            android:exported="false" />
+        <activity
+            android:name=".InicioEst"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

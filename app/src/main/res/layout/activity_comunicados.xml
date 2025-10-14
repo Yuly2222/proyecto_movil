@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemComunicadoRoot"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:background="?attr/selectableItemBackground"
+    android:paddingStart="16dp"
+    android:paddingEnd="12dp">
+
+    <!-- Avatar / icono del emisor -->
+    <ImageView
+        android:id="@+id/ivEmisorAvatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="Avatar del emisor"
+        android:scaleType="centerCrop"
+        android:src="@drawable/estrella"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <!-- Nombre del emisor (negrita) -->
+    <TextView
+        android:id="@+id/tvEmisorNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Nombre del Emisor"
+        android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/ivEmisorAvatar"
+        app:layout_constraintTop_toTopOf="@id/ivEmisorAvatar"
+        app:layout_constraintEnd_toStartOf="@id/tvHoraComunicado"
+        app:layout_goneMarginEnd="8dp"
+        android:layout_marginStart="12dp"/>
+
+    <!-- Hora / fecha corta -->
+    <TextView
+        android:id="@+id/tvHoraComunicado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3:28 a. m."
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintTop_toTopOf="@id/tvEmisorNombre"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Título del comunicado -->
+    <TextView
+        android:id="@+id/tvComunicadoTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Título del comunicado"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintStart_toStartOf="@id/tvEmisorNombre"
+        app:layout_constraintTop_toBottomOf="@id/tvEmisorNombre"
+        app:layout_constraintEnd_toStartOf="@id/ivAccionSecundaria"
+        android:layout_marginTop="2dp"/>
+
+    <!-- Inicio del mensaje / preview -->
+    <TextView
+        android:id="@+id/tvComunicadoPreview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Inicio del mensaje..."
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="@id/tvComunicadoTitulo"
+        app:layout_constraintTop_toBottomOf="@id/tvComunicadoTitulo"
+        app:layout_constraintEnd_toStartOf="@id/ivAccionSecundaria"
+        android:layout_marginTop="2dp"/>
+
+    <!-- Ícono acción secundaria (por ejemplo: más, anclar, etc.) -->
+    <ImageView
+        android:id="@+id/ivAccionSecundaria"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:padding="4dp"
+        android:contentDescription="Acción del comunicado"
+        android:src="@drawable/estrella"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
