@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
 
-class Comunicados : AppCompatActivity() {
+class Comunicados_Profe : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_imicio_comunicados)
+        setContentView(R.layout.activity_comunicados_profe)
 
         val bottom = findViewById<BottomNavigationView>(R.id.bottomNav)
         bottom.selectedItemId = R.id.nav_notifications

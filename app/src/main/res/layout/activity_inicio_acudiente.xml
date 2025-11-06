@@ -9,27 +9,76 @@
     android:orientation="vertical"
     android:background="@drawable/gradient_bg"
     android:fitsSystemWindows="true"
-    tools:context=".InicioProf">
+    tools:context=".InicioAcudiente">
 
-    <!-- Contenedor principal -->
+    <!-- 🔹 Cabecera con información del hijo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/ivHijo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_person"
+            android:background="@drawable/rounded_white_card"
+            android:padding="10dp"
+            android:elevation="4dp"
+            android:layout_marginEnd="16dp"
+            android:clipToOutline="true" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNombreHijo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Juan Pérez"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/tvGradoHijo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grado: 9°A"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/tvResumen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Promedio: 4.2 | Tareas pendientes: 3"
+                android:textSize="13sp"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 🔹 Tarjetas principales -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:orientation="vertical">
 
-        <!-- Grid de 2 columnas -->
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:columnCount="2"
-            android:rowCount="3"
             android:alignmentMode="alignMargins"
-            android:useDefaultMargins="true"
-            android:clipToPadding="false">
+            android:useDefaultMargins="true">
 
-            <!-- 1️⃣ Comunicados -->
+            <!-- Tareas del hijo -->
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="180dp"
@@ -48,16 +97,16 @@
                     android:foreground="?attr/selectableItemBackground">
 
                     <ImageView
-                        android:id="@+id/comunicados"
+                        android:id="@+id/tareas"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/anuncio"
+                        android:src="@drawable/tareas"
                         android:scaleType="centerInside"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Comunicados"
+                        android:text="Tareas del hijo"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="15sp"
@@ -66,98 +115,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Publica avisos a tus alumnos"
+                        android:text="Consulta tareas pendientes"
                         android:textColor="@android:color/darker_gray"
                         android:textSize="12sp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- 2️⃣ Calendario -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="180dp"
-                android:layout_columnWeight="1"
-                android:backgroundTint="@android:color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp"
-                    android:foreground="?attr/selectableItemBackground">
-
-                    <ImageView
-                        android:id="@+id/calendario"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/calendario" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Calendario"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="15sp"
-                        android:layout_marginTop="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Revisa fechas importantes"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="12sp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- 3️⃣ Cursos -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="180dp"
-                android:layout_columnWeight="1"
-                android:backgroundTint="@android:color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp"
-                    android:foreground="?attr/selectableItemBackground">
-
-                    <ImageView
-                        android:id="@+id/cursos"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/ic_books"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Cursos"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="15sp"
-                        android:layout_marginTop="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Gestiona tus clases asignadas"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="12sp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- 4️⃣ Registrar notas -->
+            <!-- Notas -->
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="180dp"
@@ -180,12 +144,12 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:src="@drawable/notas"
-                        />
+                        android:scaleType="centerInside"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Registrar notas"
+                        android:text="Notas y desempeño"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:textSize="15sp"
@@ -194,13 +158,56 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sube calificaciones fácilmente"
+                        android:text="Revisa el progreso académico"
                         android:textColor="@android:color/darker_gray"
                         android:textSize="12sp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- 5️⃣ Mensajes -->
+            <!-- Calendario -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_columnWeight="1"
+                android:backgroundTint="@android:color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:foreground="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/calendario"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/calendario"
+                        android:scaleType="centerInside"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Calendario escolar"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fechas y eventos importantes"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Mensajes -->
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="180dp"
@@ -223,7 +230,7 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:src="@drawable/ic_messages"
-                        />
+                        android:scaleType="centerInside"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -237,59 +244,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Comunícate con estudiantes"
+                        android:text="Comunícate con el docente"
                         android:textColor="@android:color/darker_gray"
                         android:textSize="12sp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <!-- 6️⃣ Perfil docente -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="180dp"
-                android:layout_columnWeight="1"
-                android:backgroundTint="@android:color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp"
-                    android:foreground="?attr/selectableItemBackground">
-
-                    <ImageView
-                        android:id="@+id/datospersonales"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/usuario"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Perfil docente"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="15sp"
-                        android:layout_marginTop="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Actualiza tu información"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="12sp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
         </GridLayout>
     </LinearLayout>
 
-    <!-- 🔹 Barra inferior anclada -->
+    <!-- 🔹 Barra inferior fija -->
     <include
         layout="@layout/bottom_navigation_view"
         android:layout_width="match_parent"

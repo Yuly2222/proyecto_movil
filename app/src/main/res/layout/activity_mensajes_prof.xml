@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/gradient_bg">
 
-    <!-- Contenedor principal con padding interno -->
+    <!-- Contenedor principal con padding -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -15,47 +15,46 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Barra superior -->
+        <!-- 🔹 Barra superior -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingVertical="12dp">
+            android:paddingBottom="12dp">
 
             <TextView
-                android:id="@+id/tituloClases"
+                android:id="@+id/tvTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Mis Notas"
+                android:text="Mensajes"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="26sp"
-                android:fontFamily="sans-serif-medium"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"/>
         </LinearLayout>
 
-        <!-- Fondo blanco con las notas -->
-        <LinearLayout
+        <!-- 🔹 Lista de conversaciones -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMensajes"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@drawable/rounded_white_card"
-            android:padding="12dp"
-            android:elevation="4dp"
-            android:layout_marginTop="8dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNotas"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:paddingBottom="8dp"/>
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp" />
     </LinearLayout>
 
-    <!-- 🔹 Barra inferior (fuera del padding, ocupando todo el ancho) -->
+    <!-- 🔹 Botón flotante para nuevo mensaje -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabNuevoMensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="24dp"
+        android:contentDescription="Nuevo mensaje"
+        app:srcCompat="@drawable/ic_messages" />
+
+    <!-- 🔹 Barra inferior anclada -->
     <include
         layout="@layout/bottom_navigation_view"
         android:layout_width="match_parent"

@@ -5,64 +5,52 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class InicioProf : AppCompatActivity() {
+class InicioAcudiente : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_inicioprof)
-
-        // 🔹 Ocultar ActionBar (para visual limpio)
+        setContentView(R.layout.activity_inicioacudiente)
         supportActionBar?.hide()
 
-        // 🔹 Referencias a los botones (tarjetas)
-        val btnComunicados = findViewById<ImageView>(R.id.comunicados)
+        // 🔹 Referencias de las tarjetas
+        val btnTareas = findViewById<ImageView>(R.id.tareas)
+        val btnNotas = findViewById<ImageView>(R.id.notas)
         val btnCalendario = findViewById<ImageView>(R.id.calendario)
-        val btnCursos = findViewById<ImageView>(R.id.cursos)
-        val btnRegistrarNotas = findViewById<ImageView>(R.id.notas)
         val btnMensajes = findViewById<ImageView>(R.id.mensajes)
-        val btnPerfil = findViewById<ImageView>(R.id.datospersonales)
 
-        // 🔹 Animaciones con navegación
-        setAnimatedClick(btnComunicados) {
-            startActivity(Intent(this, Comunicados::class.java))
+        // 🔹 Acciones con animación
+        setAnimatedClick(btnTareas) {
+            startActivity(Intent(this, TareasHijo::class.java))
+        }
+        setAnimatedClick(btnNotas) {
+            startActivity(Intent(this, NotasEst::class.java))
         }
         setAnimatedClick(btnCalendario) {
-            startActivity(Intent(this, Calendario_Profe::class.java))
-        }
-        setAnimatedClick(btnCursos) {
-            startActivity(Intent(this, cursos_prof::class.java))
-        }
-        setAnimatedClick(btnRegistrarNotas) {
-            startActivity(Intent(this, RegistrarNotasProf::class.java))
+            startActivity(Intent(this, Calendario::class.java))
         }
         setAnimatedClick(btnMensajes) {
             startActivity(Intent(this, MensajesProf::class.java))
         }
-        setAnimatedClick(btnPerfil) {
-            startActivity(Intent(this, ProfileProfe::class.java))
-        }
 
-        // 🔹 Configurar barra inferior
+        // 🔹 Barra inferior
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
         bottomNav.selectedItemId = R.id.nav_home
 
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> true
-                R.id.nav_courses -> { startActivity(Intent(this, cursos_prof::class.java)); true }
                 R.id.nav_calendar -> { startActivity(Intent(this, Calendario::class.java)); true }
                 R.id.nav_notifications -> { startActivity(Intent(this, Comunicados::class.java)); true }
-                R.id.nav_profile -> { startActivity(Intent(this, ProfileProfe::class.java)); true }
+                R.id.nav_profile -> { startActivity(Intent(this, ProfileActivityEst::class.java)); true }
                 else -> false
             }
         }
     }
 
     /**
-     * 💫 Aplica animación fluida con rebote y ligera elevación al hacer clic.
-     * Usada también en InicioEst para mantener coherencia visual.
+     * 💫 Animación fluida con rebote y ligera elevación al hacer clic.
      */
     private fun setAnimatedClick(view: View, action: () -> Unit) {
         view.setOnClickListener {

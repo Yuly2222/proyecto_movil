@@ -16,6 +16,7 @@ class AdapterComunicados(
     private val comunicados: List<Comunicado>
 ) : RecyclerView.Adapter<AdapterComunicados.ComunicadoViewHolder>() {
 
+
     inner class ComunicadoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ivEmisorAvatar: ImageView = itemView.findViewById(R.id.ivEmisorAvatar)
         val tvEmisorNombre: TextView = itemView.findViewById(R.id.tvEmisorNombre)
@@ -27,7 +28,8 @@ class AdapterComunicados(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComunicadoViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.activity_comunicados, parent, false)
+            .inflate(R.layout.item_comunicado, parent, false)
+
         return ComunicadoViewHolder(view)
     }
 

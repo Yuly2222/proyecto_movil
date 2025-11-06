@@ -40,7 +40,7 @@ class cursos_prof : AppCompatActivity() {
                 R.id.nav_courses -> true
 
                 R.id.nav_calendar -> {
-                    startActivity(Intent(this, Calendario::class.java))
+                    startActivity(Intent(this, Calendario_Profe::class.java))
                     true
                 }
 
@@ -50,7 +50,7 @@ class cursos_prof : AppCompatActivity() {
                 }
 
                 R.id.nav_profile -> {
-                    startActivity(Intent(this, cursos_prof::class.java))
+                    startActivity(Intent(this, ProfileProfe::class.java))
                     true
                 }
 
