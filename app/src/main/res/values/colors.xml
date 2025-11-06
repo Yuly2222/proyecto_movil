@@ -21,5 +21,8 @@
     <color name="textSecondary">#4A4A4A</color> <!-- Texto gris para descripciones -->
 
     <!-- Fondo general -->
-    <color name="background">#FFFFFF</color>     <!-- Fondo blanco (pantallas secundarias) -->
+    <color name="background">#FFFFFF</color>
+
+    <color name="errorRed">#E53935</color>
+    <color name="primaryDark">#1976D2</color>
 </resources>

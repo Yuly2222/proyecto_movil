@@ -8,7 +8,7 @@
     android:background="@drawable/gradient_bg"
     android:padding="16dp">
 
-    <!-- Contenido principal desplazable -->
+    <!-- Contenido desplazable -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -21,9 +21,9 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <!-- 🔹 Avatar circular y datos básicos -->
+            <!-- 🔹 Avatar y datos básicos -->
             <ImageView
-                android:id="@+id/ivAvatar"
+                android:id="@+id/ivAvatarProfe"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:src="@drawable/ic_person"
@@ -35,36 +35,73 @@
                 android:clipToOutline="true"/>
 
             <TextView
-                android:id="@+id/tvName"
+                android:id="@+id/tvNameProfe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre Apellido"
+                android:text="Nombre del Profesor"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="12dp"/>
 
             <TextView
-                android:id="@+id/tvEmail"
+                android:id="@+id/tvEmailProfe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="usuario@correo.com"
+                android:text="profesor@colegio.edu.co"
                 android:textSize="14sp"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="4dp"/>
 
             <TextView
-                android:id="@+id/tvRolEst"
+                android:id="@+id/tvRolProfe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Estudiante"
+                android:text="Profesor de Colegio"
                 android:textSize="14sp"
                 android:textStyle="italic"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="20dp"/>
 
-            <!-- 🔹 Contenedor de tarjetas de opciones -->
+            <!-- 🔹 Tarjeta de información académica -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/rounded_white_card"
+                android:elevation="4dp"
+                android:padding="16dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Información del Profesor"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvGrado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Grado asignado: 9°"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:id="@+id/tvMaterias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Materias: Matemáticas, Física"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <!-- 🔹 Tarjeta de opciones -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,7 +111,37 @@
                 android:padding="8dp"
                 android:layout_marginBottom="20dp">
 
-                <!-- Opción: Notificaciones -->
+                <!-- Ver mis cursos -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/notas"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:text="Ver mis clases"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"/>
+
+                <!-- Notificaciones -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -87,7 +154,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_notifications"
-                        android:tint="@color/primaryDark"/>
+                        />
 
                     <TextView
                         android:layout_width="0dp"
@@ -98,41 +165,11 @@
                         android:textColor="@color/black"
                         android:textSize="16sp"/>
                 </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E0E0E0"/>
-
-                <!-- Opción: Datos personales -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:paddingVertical="12dp"
-                    android:paddingHorizontal="16dp">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_person"
-                        android:tint="@color/primaryDark"/>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="12dp"
-                        android:text="Datos personales"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"/>
-                </LinearLayout>
             </LinearLayout>
 
-            <!-- 🔹 Botones principales -->
+            <!-- 🔹 Botones -->
             <Button
-                android:id="@+id/btnEdit"
+                android:id="@+id/btnEditProfe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Editar perfil"
@@ -143,7 +180,7 @@
                 android:elevation="3dp"/>
 
             <Button
-                android:id="@+id/btnLogout"
+                android:id="@+id/btnLogoutProfe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Cerrar sesión"
@@ -155,9 +192,9 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- 🔹 Barra inferior -->
+    <!-- Barra inferior -->
     <include
         layout="@layout/bottom_navigation_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 </LinearLayout>

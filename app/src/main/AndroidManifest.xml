@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_movil">
         <activity
+            android:name=".Agenda_Escolar_Profe"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileProfe"
+            android:exported="false" />
+        <activity
+            android:name=".cursos_prof"
+            android:exported="false" />
+        <activity
             android:name=".AdapterComunicados"
             android:exported="false" />
         <activity
