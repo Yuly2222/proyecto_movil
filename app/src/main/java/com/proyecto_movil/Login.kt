@@ -28,14 +28,9 @@ class Login : AppCompatActivity() {
         val editEmail = findViewById<EditText>(R.id.editEmail)
         val editPassword = findViewById<EditText>(R.id.editPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
-        val btnRegister = findViewById<Button>(R.id.btnRegister)
 
-        // Ir al registro
-        btnRegister.setOnClickListener {
-            val intent = Intent(this, Registro::class.java)
-            startActivity(intent)
-            finish()
-        }
+
+
 
         // Iniciar sesión
         btnLogin.setOnClickListener {

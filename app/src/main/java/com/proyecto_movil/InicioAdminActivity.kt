@@ -30,7 +30,7 @@ class InicioAdminActivity : AppCompatActivity() {
 
         // Navegación a DashboardActivity
         btnDashboard.setOnClickListener {
-            val intent = Intent(this, Clases::class.java)
+            val intent = Intent(this, CrearClase::class.java)
             startActivity(intent)
         }
 
@@ -42,7 +42,7 @@ class InicioAdminActivity : AppCompatActivity() {
 
         // Navegación a CrearGrupoActivity
         btnCrearGrupo.setOnClickListener {
-            val intent = Intent(this, Foro::class.java)
+            val intent = Intent(this, CrearForoAdmin::class.java)
             startActivity(intent)
         }
     }

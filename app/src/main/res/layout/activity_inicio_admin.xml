@@ -166,10 +166,6 @@
         </androidx.cardview.widget.CardView>
     </GridLayout>
 
-    <!-- Barra inferior (si la estás usando) -->
-    <include
-        layout="@layout/bottom_navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
 
 </LinearLayout>

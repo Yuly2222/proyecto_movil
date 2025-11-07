@@ -5,14 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_bg"
-    android:padding="24dp">
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:padding="24dp"
+    tools:context=".RegistroAdminActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false">
 
-        <!-- Texto Volver arriba a la izquierda -->
         <TextView
             android:id="@+id/txtVolver"
             android:layout_width="match_parent"
@@ -34,8 +38,6 @@
             android:layout_marginBottom="20dp"
             android:contentDescription="Logo" />
 
-
-        <!-- Título centrado -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,22 +46,17 @@
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_gravity="center"
-            android:layout_marginBottom="24dp"
-            />
+            android:layout_marginBottom="24dp" />
 
-
+        <!-- Campos base -->
         <EditText
             android:id="@+id/editNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre"
-            android:inputType="textPersonName"
             android:backgroundTint="@color/textPrimary"
             android:textColor="@color/textPrimary"
             android:textColorHint="@color/textPrimary"
-            android:drawableStart="@android:drawable/ic_menu_edit"
-            android:drawablePadding="16dp"
-            android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
         <EditText
@@ -67,13 +64,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Apellido"
-            android:inputType="textPersonName"
             android:backgroundTint="@color/textPrimary"
             android:textColor="@color/textPrimary"
             android:textColorHint="@color/textPrimary"
-            android:drawableStart="@android:drawable/ic_menu_edit"
-            android:drawablePadding="16dp"
-            android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
         <Spinner
@@ -81,8 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:backgroundTint="@color/textPrimary"
-            android:padding="12dp" />
+            android:backgroundTint="@color/textPrimary" />
 
         <EditText
             android:id="@+id/editDocumento"
@@ -93,24 +85,18 @@
             android:backgroundTint="@color/textPrimary"
             android:textColor="@color/textPrimary"
             android:textColorHint="@color/textPrimary"
-            android:drawableStart="@android:drawable/ic_menu_edit"
-            android:drawablePadding="16dp"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp" />
 
         <EditText
             android:id="@+id/editTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Telefono"
+            android:hint="Teléfono"
             android:inputType="phone"
             android:backgroundTint="@color/textPrimary"
             android:textColor="@color/textPrimary"
             android:textColorHint="@color/textPrimary"
-            android:drawableStart="@android:drawable/ic_menu_call"
-            android:drawablePadding="16dp"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp" />
 
         <EditText
             android:id="@+id/editDireccion"
@@ -121,10 +107,7 @@
             android:backgroundTint="@color/textPrimary"
             android:textColor="@color/textPrimary"
             android:textColorHint="@color/textPrimary"
-            android:drawableStart="@android:drawable/ic_menu_mylocation"
-            android:drawablePadding="16dp"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp" />
 
         <EditText
             android:id="@+id/editEmail"
@@ -135,39 +118,129 @@
             android:backgroundTint="@color/textPrimary"
             android:textColor="@color/textPrimary"
             android:textColorHint="@color/textPrimary"
-            android:drawableStart="@android:drawable/ic_dialog_email"
-            android:drawablePadding="16dp"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp" />
 
         <EditText
             android:id="@+id/editPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="Contraseña"
             android:inputType="textPassword"
             android:backgroundTint="@color/textPrimary"
             android:textColor="@color/textPrimary"
             android:textColorHint="@color/textPrimary"
-            android:drawableStart="@android:drawable/ic_lock_idle_lock"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp" />
 
         <Spinner
             android:id="@+id/spinnerTipoUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:backgroundTint="@color/textPrimary"
-            android:padding="12dp" />
+            android:backgroundTint="@color/textPrimary" />
+
+        <!-- Estudiante: Grado -->
+        <LinearLayout
+            android:id="@+id/layoutGrado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seleccionar grado:"
+                android:textColor="@color/textPrimary"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="6dp" />
+
+            <Spinner
+                android:id="@+id/spinnerGrado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/textPrimary"
+                android:padding="8dp" />
+        </LinearLayout>
+
+        <!-- Profesor: Director de curso + Asignatura -->
+        <LinearLayout
+            android:id="@+id/layoutProfesor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Director de curso:"
+                android:textColor="@color/textPrimary"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="6dp" />
+
+            <Spinner
+                android:id="@+id/spinnerDirectorCurso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/textPrimary"
+                android:padding="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Asignatura:"
+                android:textColor="@color/textPrimary"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="6dp" />
+
+            <Spinner
+                android:id="@+id/spinnerAsignatura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/textPrimary"
+                android:padding="8dp" />
+        </LinearLayout>
+
+        <!-- Acudiente: seleccionar estudiante -->
+        <LinearLayout
+            android:id="@+id/layoutEstudiante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seleccionar estudiante:"
+                android:textColor="@color/textPrimary"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginBottom="6dp" />
+
+            <Spinner
+                android:id="@+id/spinnerEstudiantes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/textPrimary"
+                android:padding="8dp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrarse"
+            android:text="Registrar usuario"
             android:textColor="@android:color/white"
             android:backgroundTint="@color/accentOrange"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginTop="20dp"
+            android:elevation="4dp" />
     </LinearLayout>
 </ScrollView>

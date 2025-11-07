@@ -47,16 +47,16 @@ class VerClasesActivas : AppCompatActivity() {
 
                 // 🔹 Configurar botón Volver según rol
                 tvVolver.setOnClickListener {
-                    val destino = when (userRol) {
-                        "Admin" -> InicioAdminActivity::class.java
-                        "Profesor" -> InicioProf::class.java
-                        "Estudiante" -> InicioEst::class.java
-                        "Acudiente" -> InicioAcudiente::class.java
-                        else -> Clases::class.java
+                    when (userRol) {
+                        "Admin" -> startActivity(Intent(this@VerClasesActivas, InicioAdminActivity::class.java))
+                        "Profesor" -> startActivity(Intent(this@VerClasesActivas, InicioProf::class.java))
+                        "Estudiante" -> startActivity(Intent(this@VerClasesActivas, InicioEst::class.java))
+                        "Acudiente" -> startActivity(Intent(this@VerClasesActivas, InicioAcudiente::class.java))
+                        else -> startActivity(Intent(this@VerClasesActivas, VerClasesActivas::class.java))
                     }
-                    startActivity(Intent(this@VerClasesActivas, destino))
                     finish()
                 }
+
 
                 // 🔹 Luego mostramos las clases
                 cargarClases(uid)

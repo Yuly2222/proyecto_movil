@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_movil">
         <activity
+            android:name=".ForoProfesor"
+            android:exported="false" />
+        <activity
+            android:name=".CrearForoAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".ClasesEstudiante"
+            android:exported="false" />
+        <activity
             android:name=".Asistencia"
             android:exported="false" />
         <activity

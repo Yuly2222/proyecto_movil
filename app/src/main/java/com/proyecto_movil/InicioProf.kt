@@ -38,7 +38,7 @@ class InicioProf : AppCompatActivity() {
             startActivity(Intent(this, RegistrarNotasProf::class.java))
         }
         setAnimatedClick(btnMensajes) {
-            startActivity(Intent(this, MensajesProf::class.java))
+            startActivity(Intent(this, ForoProfesor::class.java))
         }
         setAnimatedClick(btnPerfil) {
             startActivity(Intent(this, ProfileProfe::class.java))
