@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+    android:padding="16dp"
+    tools:context=".ForoAcudiente">
+
+    <!-- Volver -->
+    <TextView
+        android:id="@+id/tvVolver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="← Volver"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:padding="4dp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTituloForo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Foro del Grado"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- Lista de mensajes (solo lectura) -->
+    <ScrollView
+        android:id="@+id/scrollMensajes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:background="@drawable/bg_card"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:id="@+id/contenedorMensajes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <!-- Barra inferior informativa (no editable) -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Solo lectura: este foro es para comunicados del profesor."
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        android:alpha="0.8"
+        android:paddingTop="8dp"/>
+
+</LinearLayout>

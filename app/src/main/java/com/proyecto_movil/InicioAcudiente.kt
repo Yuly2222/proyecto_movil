@@ -31,7 +31,7 @@ class InicioAcudiente : AppCompatActivity() {
             startActivity(Intent(this, Calendario::class.java))
         }
         setAnimatedClick(btnMensajes) {
-            startActivity(Intent(this, MensajesProf::class.java))
+            startActivity(Intent(this, ForoAcudiente::class.java))
         }
 
         // 🔹 Barra inferior
