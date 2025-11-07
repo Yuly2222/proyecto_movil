@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg"
+    android:padding="24dp"
+    tools:context=".CrearEventoAdminActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Botón volver -->
+        <TextView
+            android:id="@+id/txtVolver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:textColor="@color/textPrimary"
+            android:textSize="16sp"
+            android:layout_marginTop="14dp"
+            android:gravity="start"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crear Evento"
+            android:textColor="@color/textPrimary"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Campo Título -->
+        <EditText
+            android:id="@+id/editTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Título del evento"
+            android:inputType="textCapWords"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
+            android:drawableStart="@android:drawable/ic_menu_edit"
+            android:drawablePadding="16dp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Campo Detalle -->
+        <EditText
+            android:id="@+id/editDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lugar o detalle"
+            android:inputType="text"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
+            android:drawableStart="@android:drawable/ic_menu_mylocation"
+            android:drawablePadding="16dp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Campo Fecha -->
+        <EditText
+            android:id="@+id/editFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fecha (YYYY-MM-DD)"
+            android:focusable="false"
+            android:clickable="true"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
+            android:drawableStart="@android:drawable/ic_menu_today"
+            android:drawablePadding="16dp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Campo Hora -->
+        <EditText
+            android:id="@+id/editHora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hora (HH:mm)"
+            android:focusable="false"
+            android:clickable="true"
+            android:backgroundTint="@color/textPrimary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
+            android:drawableStart="@android:drawable/ic_lock_idle_alarm"
+            android:drawablePadding="16dp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Botón Guardar -->
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar Evento"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/accentOrange"
+            android:layout_marginBottom="12dp" />
+
+    </LinearLayout>
+</ScrollView>

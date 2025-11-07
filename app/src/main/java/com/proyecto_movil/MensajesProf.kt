@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
 
 class MensajesProf : AppCompatActivity() {
 
@@ -22,15 +23,18 @@ class MensajesProf : AppCompatActivity() {
         rvMensajes = findViewById(R.id.rvMensajes)
         fabNuevo = findViewById(R.id.fabNuevoMensaje)
 
-        // 🔹 Configurar lista de ejemplo
+        // 🔹 UID del usuario actual
+        val uidActual = FirebaseAuth.getInstance().currentUser?.uid
+
+        // 🔹 Lista de prueba
         val listaMensajes = listOf(
-            Mensaje("Juan Pérez", "Profesor, tengo duda con la tarea...", "10:30 a.m."),
-            Mensaje("María López", "Gracias por la retroalimentación.", "11:05 a.m."),
-            Mensaje("Andrés Gómez", "¿Podría revisar mi nota?", "1:45 p.m.")
+            Mensaje("Juan Pérez", "Profesor, tengo duda con la tarea...", "10:30 a.m.", "1"),
+            Mensaje("María López", "Gracias por la retroalimentación.", "11:05 a.m.", uidActual ?: "2"),
+            Mensaje("Andrés Gómez", "¿Podría revisar mi nota?", "1:45 p.m.", "3")
         )
 
         rvMensajes.layoutManager = LinearLayoutManager(this)
-        adapter = MensajeAdapter(listaMensajes)
+        adapter = MensajeAdapter(listaMensajes, uidActual)
         rvMensajes.adapter = adapter
 
         // 🔹 Acción del botón flotante

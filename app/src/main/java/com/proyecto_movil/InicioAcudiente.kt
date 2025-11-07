@@ -11,7 +11,7 @@ class InicioAcudiente : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_inicioacudiente)
+        setContentView(R.layout.activity_inicio_acudiente)
         supportActionBar?.hide()
 
         // 🔹 Referencias de las tarjetas
@@ -22,7 +22,7 @@ class InicioAcudiente : AppCompatActivity() {
 
         // 🔹 Acciones con animación
         setAnimatedClick(btnTareas) {
-            startActivity(Intent(this, TareasHijo::class.java))
+            startActivity(Intent(this, Tareas::class.java))
         }
         setAnimatedClick(btnNotas) {
             startActivity(Intent(this, NotasEst::class.java))

@@ -4,12 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
-class MensajeAdapter(private val mensajes: List<Mensaje>) :
-    RecyclerView.Adapter<MensajeAdapter.MensajeViewHolder>() {
+class MensajeAdapter(
+    private val mensajes: List<Mensaje>,
+    private val uidActual: String?
+) : RecyclerView.Adapter<MensajeAdapter.MensajeViewHolder>() {
 
     class MensajeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val cardView: CardView = itemView.findViewById(R.id.cardMensaje)
         val tvRemitente: TextView = itemView.findViewById(R.id.tvRemitente)
         val tvPreview: TextView = itemView.findViewById(R.id.tvPreview)
         val tvHora: TextView = itemView.findViewById(R.id.tvHora)
@@ -26,6 +30,15 @@ class MensajeAdapter(private val mensajes: List<Mensaje>) :
         holder.tvRemitente.text = mensaje.remitente
         holder.tvPreview.text = mensaje.preview
         holder.tvHora.text = mensaje.hora
+
+        // Si el mensaje es del usuario actual → fondo verde suave
+        val colorFondo = if (mensaje.uid == uidActual) {
+            android.graphics.Color.parseColor("#D0F8CE") // verde suave
+        } else {
+            android.graphics.Color.WHITE
+        }
+
+        holder.cardView.setCardBackgroundColor(colorFondo)
     }
 
     override fun getItemCount() = mensajes.size

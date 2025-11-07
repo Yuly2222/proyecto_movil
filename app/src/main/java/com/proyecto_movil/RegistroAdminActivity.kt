@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
-class Registro : AppCompatActivity() {
+class RegistroAdminActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseDatabase
@@ -40,15 +40,15 @@ class Registro : AppCompatActivity() {
         val spinnerTipoUsuario = findViewById<Spinner>(R.id.spinnerTipoUsuario)
         val btnSave = findViewById<Button>(R.id.btnSave)
 
-        // Cambiar color de textos directamente
+        // Cambiar color de textos
         txtVolver.setTextColor(Color.WHITE)
         btnSave.setTextColor(Color.WHITE)
 
-        // Opciones de los Spinners
+        // Opciones para los Spinners
         val tiposDocumento = listOf("CC", "TI", "CE", "Pasaporte")
         val tiposUsuario = listOf("Estudiante", "Profesor", "Admin", "Acudiente")
 
-        // Adaptador genérico para spinner con estilos personalizados
+        // Adaptador genérico para spinners
         fun crearAdaptador(opciones: List<String>): ArrayAdapter<String> {
             return object : ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones) {
                 override fun getView(position: Int, convertView: View?, parent: android.view.ViewGroup): View {
@@ -74,7 +74,8 @@ class Registro : AppCompatActivity() {
 
         // Acción del texto "Volver"
         txtVolver.setOnClickListener {
-            startActivity(Intent(this, Login::class.java))
+            val intent = Intent(this, InicioAdminActivity::class.java)
+            startActivity(intent)
             finish()
         }
 
@@ -98,21 +99,21 @@ class Registro : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Validar formato de email y longitud de contraseña
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 Toast.makeText(this, "Correo electrónico inválido", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
             if (password.length < 6) {
                 Toast.makeText(this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Crear usuario en Firebase Authentication
+            // Crear usuario en Firebase Authentication (solo registro, sin login)
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        val uid = auth.currentUser?.uid
+                        val uid = task.result?.user?.uid
                         if (uid != null) {
                             val usuario = mapOf(
                                 "nombre" to nombre,
@@ -125,26 +126,14 @@ class Registro : AppCompatActivity() {
                                 "tipoUsuario" to tipoUsuario
                             )
 
-                            // Guardar en Realtime Database
+                            // Guardar datos del usuario en Realtime Database
                             db.reference.child("usuarios").child(uid).setValue(usuario)
                                 .addOnSuccessListener {
                                     Toast.makeText(
                                         this,
-                                        "Registro exitoso, bienvenido $nombre",
+                                        "Usuario creado correctamente. Ya puede iniciar sesión.",
                                         Toast.LENGTH_LONG
                                     ).show()
-
-                                    // Redirección según tipo de usuario
-                                    val intent = when (tipoUsuario) {
-                                        "Estudiante" -> Intent(this, InicioEst::class.java)
-                                        "Profesor" -> Intent(this, InicioProf::class.java)
-                                        "Admin" -> Intent(this, InicioAdminActivity::class.java)
-                                        "Acudiente" -> Intent(this, InicioAcudiente::class.java)
-                                        else -> Intent(this, Login::class.java)
-                                    }
-
-                                    startActivity(intent)
-                                    finish()
                                 }
                                 .addOnFailureListener {
                                     Toast.makeText(
@@ -162,6 +151,9 @@ class Registro : AppCompatActivity() {
                         ).show()
                     }
                 }
+            val intent = Intent(this, InicioAdminActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

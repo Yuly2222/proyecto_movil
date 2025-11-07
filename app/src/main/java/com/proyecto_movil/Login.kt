@@ -30,12 +30,14 @@ class Login : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val btnRegister = findViewById<Button>(R.id.btnRegister)
 
+        // Ir al registro
         btnRegister.setOnClickListener {
             val intent = Intent(this, Registro::class.java)
             startActivity(intent)
             finish()
         }
 
+        // Iniciar sesión
         btnLogin.setOnClickListener {
             val email = editEmail.text.toString().trim()
             val password = editPassword.text.toString().trim()
@@ -50,14 +52,12 @@ class Login : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val uid = auth.currentUser?.uid
                         if (uid != null) {
-                            // Leer nombre y tipoUsuario desde Realtime Database
+                            // Leer datos del usuario desde la base de datos
                             db.reference.child("usuarios").child(uid)
                                 .get()
                                 .addOnSuccessListener { snapshot ->
-                                    val nombre = snapshot.child("nombre")
-                                        .getValue(String::class.java)
-                                    val tipoUsuario = snapshot.child("tipoUsuario")
-                                        .getValue(String::class.java)
+                                    val nombre = snapshot.child("nombre").getValue(String::class.java)
+                                    val tipoUsuario = snapshot.child("tipoUsuario").getValue(String::class.java)
 
                                     if (!nombre.isNullOrEmpty()) {
                                         Toast.makeText(
@@ -66,26 +66,25 @@ class Login : AppCompatActivity() {
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     } else {
-                                        Toast.makeText(
-                                            this,
-                                            "Bienvenido",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                        Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show()
                                     }
 
-                                    // Redirigir según el tipo de usuario
-                                    val intent = if (tipoUsuario == "Estudiante") {
-                                        Intent(this, InicioEst::class.java)
-                                    } else {
-                                        Intent(this, InicioProf::class.java)
+                                    // Redirigir según tipo de usuario
+                                    val intent = when (tipoUsuario) {
+                                        "Estudiante" -> Intent(this, InicioEst::class.java)
+                                        "Profesor" -> Intent(this, InicioProf::class.java)
+                                        "Admin" -> Intent(this, InicioAdminActivity::class.java)
+                                        "Acudiente" -> Intent(this, InicioAcudiente::class.java)
+                                        else -> Intent(this, Login::class.java)
                                     }
+
                                     startActivity(intent)
                                     finish()
                                 }
                                 .addOnFailureListener {
                                     Toast.makeText(
                                         this,
-                                        "Error al obtener datos",
+                                        "Error al obtener datos del usuario",
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }

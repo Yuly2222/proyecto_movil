@@ -85,7 +85,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dashboard"
+                    android:text="Administrar Clases"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:textSize="15sp"
@@ -148,7 +148,7 @@
                 android:foreground="?attr/selectableItemBackground">
 
                 <ImageView
-                    android:id="@+id/crearGrupo"
+                    android:id="@+id/foro"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/icono"
@@ -157,14 +157,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Creación de Grupos"
+                    android:text="Foro Académico"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:textSize="15sp"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
     </GridLayout>
 
     <!-- Barra inferior (si la estás usando) -->

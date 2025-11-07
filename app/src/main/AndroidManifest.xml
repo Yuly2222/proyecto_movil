@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_movil">
         <activity
+            android:name=".Foro"
+            android:exported="false" />
+        <activity
+            android:name=".CrearEventoAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InicioAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistroAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".InicioAcudiente"
             android:exported="false" />
         <activity
