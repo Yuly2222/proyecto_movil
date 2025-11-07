@@ -70,9 +70,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre de la clase"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="#BDBDBD"
-                android:inputType="textCapWords"/>
+                android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo: Descripción -->
@@ -96,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Descripción de la clase"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="#BDBDBD"
                 android:inputType="textCapSentences|textMultiLine"
                 android:minLines="3"/>

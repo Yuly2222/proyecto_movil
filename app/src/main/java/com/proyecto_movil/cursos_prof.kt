@@ -2,60 +2,106 @@ package com.proyecto_movil
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.button.MaterialButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
-class cursos_prof : AppCompatActivity() {
+class CursosProf : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
+    private lateinit var rvCursos: RecyclerView
+    private lateinit var bottomNav: BottomNavigationView
+    private lateinit var btnAgregarCurso: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cursos_prof)
 
-        // 📘 RecyclerView de cursos
-        val recyclerView = findViewById<RecyclerView>(R.id.rvCursos)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
 
-        // Lista de ejemplo
-        val listaCursos = listOf(
-            Curso("Programación I", "INF-101", "Lunes y Miércoles, 8:00 - 10:00"),
-            Curso("Estructuras de Datos", "INF-202", "Martes y Jueves, 10:00 - 12:00"),
-            Curso("Bases de Datos", "INF-303", "Viernes, 9:00 - 12:00")
-        )
+        rvCursos = findViewById(R.id.rvCursos)
+        rvCursos.layoutManager = LinearLayoutManager(this)
 
-        recyclerView.adapter = CursoAdapter(listaCursos)
-
-        // 🔹 Barra de navegación inferior
-        val bottom = findViewById<BottomNavigationView>(R.id.bottomNav)
-        bottom.selectedItemId = R.id.nav_courses
-
-        bottom.setOnItemSelectedListener { item ->
+        bottomNav = findViewById(R.id.bottomNav)
+        bottomNav.selectedItemId = R.id.nav_courses
+        bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
                     startActivity(Intent(this, InicioProf::class.java))
                     true
                 }
-
                 R.id.nav_courses -> true
-
                 R.id.nav_calendar -> {
                     startActivity(Intent(this, Calendario_Profe::class.java))
                     true
                 }
-
                 R.id.nav_notifications -> {
                     startActivity(Intent(this, Comunicados::class.java))
                     true
                 }
-
                 R.id.nav_profile -> {
                     startActivity(Intent(this, ProfileProfe::class.java))
                     true
                 }
-
                 else -> false
             }
         }
+
+        btnAgregarCurso = findViewById(R.id.btnAgregarCurso)
+        btnAgregarCurso.setOnClickListener {
+            // Abrir la actividad CrearClase
+            startActivity(Intent(this, CrearClase::class.java))
+        }
+
+        cargarCursosProfesor()
+    }
+
+    private fun cargarCursosProfesor() {
+        val user = auth.currentUser ?: return
+        val uidProfesor = user.uid
+
+        val clasesRef = database.getReference("clases")
+        clasesRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val listaCursos = mutableListOf<Curso>()
+
+                for (claseSnap in snapshot.children) {
+                    val uid = claseSnap.child("uidProfesor").getValue(String::class.java)
+                    if (uid == uidProfesor) {
+                        val nombre = claseSnap.child("nombre").getValue(String::class.java) ?: ""
+                        val idClase = claseSnap.child("idClase").getValue(String::class.java) ?: ""
+                        val horario = claseSnap.child("descripcion").getValue(String::class.java) ?: ""
+
+                        listaCursos.add(Curso(nombre, idClase, horario))
+                    }
+                }
+
+                if (listaCursos.isEmpty()) {
+                    Toast.makeText(
+                        this@CursosProf,
+                        "No tienes clases registradas aún.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                // 🔹 Aquí se asigna el adapter, ahora cada item es clickeable
+                rvCursos.adapter = CursoAdapter(listaCursos)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(
+                    this@CursosProf,
+                    "Error al cargar clases: ${error.message}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        })
     }
 }

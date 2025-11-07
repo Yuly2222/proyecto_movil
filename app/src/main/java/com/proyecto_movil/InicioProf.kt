@@ -32,7 +32,7 @@ class InicioProf : AppCompatActivity() {
             startActivity(Intent(this, Calendario_Profe::class.java))
         }
         setAnimatedClick(btnCursos) {
-            startActivity(Intent(this, cursos_prof::class.java))
+            startActivity(Intent(this, CursosProf::class.java))
         }
         setAnimatedClick(btnRegistrarNotas) {
             startActivity(Intent(this, RegistrarNotasProf::class.java))
@@ -51,7 +51,7 @@ class InicioProf : AppCompatActivity() {
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> true
-                R.id.nav_courses -> { startActivity(Intent(this, cursos_prof::class.java)); true }
+                R.id.nav_courses -> { startActivity(Intent(this, CursosProf::class.java)); true }
                 R.id.nav_calendar -> { startActivity(Intent(this, Calendario::class.java)); true }
                 R.id.nav_notifications -> { startActivity(Intent(this, Comunicados::class.java)); true }
                 R.id.nav_profile -> { startActivity(Intent(this, ProfileProfe::class.java)); true }

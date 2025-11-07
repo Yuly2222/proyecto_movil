@@ -1,13 +1,15 @@
 package com.proyecto_movil
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CursoAdapter(private val cursos: List<Curso>) :
-    RecyclerView.Adapter<CursoAdapter.CursoViewHolder>() {
+class CursoAdapter(
+    private val cursos: List<Curso>
+) : RecyclerView.Adapter<CursoAdapter.CursoViewHolder>() {
 
     class CursoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nombre: TextView = view.findViewById(R.id.tvCursoNombre)
@@ -26,6 +28,13 @@ class CursoAdapter(private val cursos: List<Curso>) :
         holder.nombre.text = curso.nombre
         holder.codigo.text = "Código: ${curso.codigo}"
         holder.horario.text = "Horario: ${curso.horario}"
+
+        // 🔹 Click para abrir Asistencia
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, Asistencia::class.java)
+            intent.putExtra("idClase", curso.codigo)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount() = cursos.size

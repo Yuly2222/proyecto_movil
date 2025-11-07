@@ -1,64 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradient_bg">
+    android:background="@drawable/gradient_bg"
+    android:padding="16dp">
 
-    <!-- Contenedor principal con padding interno -->
-    <LinearLayout
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tituloClases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mis Clases"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <!-- Input para ID de Clase -->
+    <EditText
+        android:id="@+id/inputIdClase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa ID de Clase"
+        android:textColor="@color/black"
+        android:background="@drawable/rounded_white_card"
+        android:padding="12dp"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/btnUnirseClase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unirse a Clase"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/accentOrange"
+        android:textColor="@android:color/white"
+        android:padding="12dp"/>
+
+    <!-- RecyclerView para mostrar notas o clases del estudiante -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNotas"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/rounded_white_card"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="18dp"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        android:layout_marginTop="16dp"/>
 
-        <!-- Barra superior -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingVertical="12dp">
-
-            <TextView
-                android:id="@+id/tituloClases"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Mis Notas"
-                android:textColor="@color/white"
-                android:textSize="26sp"
-                android:fontFamily="sans-serif-medium"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <!-- Fondo blanco con las notas -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@drawable/rounded_white_card"
-            android:padding="12dp"
-            android:elevation="4dp"
-            android:layout_marginTop="8dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNotas"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:paddingBottom="8dp"/>
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- 🔹 Barra inferior (fuera del padding, ocupando todo el ancho) -->
+    <!-- Barra inferior -->
     <include
         layout="@layout/bottom_navigation_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"/>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_movil">
         <activity
+            android:name=".Asistencia"
+            android:exported="false" />
+        <activity
             android:name=".Foro"
             android:exported="false" />
         <activity
@@ -45,7 +48,7 @@
             android:name=".ProfileProfe"
             android:exported="false" />
         <activity
-            android:name=".cursos_prof"
+            android:name=".CursosProf"
             android:exported="false" />
         <activity
             android:name=".AdapterComunicados"

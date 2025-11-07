@@ -49,7 +49,7 @@ class Calendario_Profe : AppCompatActivity() {
                 }
 
                 R.id.nav_courses -> {
-                    startActivity(Intent(this, cursos_prof::class.java))
+                    startActivity(Intent(this, CursosProf::class.java))
                     true
                 }
 
