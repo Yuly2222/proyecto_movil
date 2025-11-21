@@ -26,7 +26,7 @@ class ProfileActivityEst : AppCompatActivity() {
     private lateinit var btnLogout: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(R.layout.bottom_navigation_view)
+
 
 
         super.onCreate(savedInstanceState)
@@ -85,8 +85,9 @@ class ProfileActivityEst : AppCompatActivity() {
             Toast.makeText(this, "Editar perfil (pendiente)", Toast.LENGTH_SHORT).show()
         }
         btnLogout.setOnClickListener {
-            auth.signOut(); goToLogin()
+            logoutClean()
         }
+
 
         // BottomNav (marca Perfil)
         val bottom = findViewById<BottomNavigationView>(R.id.bottomNav)
@@ -112,4 +113,20 @@ class ProfileActivityEst : AppCompatActivity() {
         startActivity(Intent(this, Login::class.java))
         finish()
     }
+    private fun logoutClean() {
+        val auth = FirebaseAuth.getInstance()
+        auth.signOut()
+
+        FirebaseDatabase.getInstance().goOffline()
+        FirebaseDatabase.getInstance().goOnline()
+
+        val prefs = getSharedPreferences("USER_DATA", MODE_PRIVATE)
+        prefs.edit().clear().apply()
+
+        val i = Intent(this, Login::class.java)
+        i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(i)
+        finish()
+    }
+
 }

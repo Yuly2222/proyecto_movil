@@ -11,8 +11,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class ProfileProfe : AppCompatActivity() {
+class ProfileAcud : AppCompatActivity() {
 
+    // Firebase
     private lateinit var auth: FirebaseAuth
     private lateinit var db: DatabaseReference
     private var userListener: ValueEventListener? = null
@@ -22,60 +23,63 @@ class ProfileProfe : AppCompatActivity() {
     private lateinit var tvName: TextView
     private lateinit var tvEmail: TextView
     private lateinit var tvRol: TextView
-    private lateinit var tvGrado: TextView
-    private lateinit var tvMaterias: TextView
+    private lateinit var tvHijos: TextView
     private lateinit var btnEdit: Button
     private lateinit var btnLogout: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile_profe)
+        setContentView(R.layout.activity_profile_acud)
+        supportActionBar?.hide()
 
-        // 🔹 Firebase
+        // Firebase
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
         if (user == null) {
             goToLogin(); return
         }
 
-        // ⬅️ CAMBIO IMPORTANTE:
-        // Antes estabas leyendo desde "profesores_colegio".
-        // Pero tus datos están en "usuarios / uid".
         db = FirebaseDatabase.getInstance().reference
             .child("usuarios")
             .child(user.uid)
 
-        // 🔹 UI
-        ivAvatar = findViewById(R.id.ivAvatarProfe)
-        tvName = findViewById(R.id.tvNameProfe)
-        tvEmail = findViewById(R.id.tvEmailProfe)
-        tvRol = findViewById(R.id.tvRolProfe)
-        tvGrado = findViewById(R.id.tvGrado)
-        tvMaterias = findViewById(R.id.tvMaterias)
-        btnEdit = findViewById(R.id.btnEditProfe)
-        btnLogout = findViewById(R.id.btnLogoutProfe)
+        // UI
+        ivAvatar = findViewById(R.id.ivAvatarAcud)
+        tvName  = findViewById(R.id.tvNameAcud)
+        tvEmail = findViewById(R.id.tvEmailAcud)
+        tvRol   = findViewById(R.id.tvRolAcud)
+        tvHijos = findViewById(R.id.tvHijos)
+        btnEdit = findViewById(R.id.btnEditAcud)
+        btnLogout = findViewById(R.id.btnLogoutAcud)
 
-        // 🔹 Escuchar datos desde Firebase
+        // ------------------------------
+        // 🔹 LÓGICA CORRECTA PARA CARGAR HIJO ASIGNADO
+        // ------------------------------
         userListener = object : ValueEventListener {
+
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 val nombre = snapshot.child("nombre").getValue(String::class.java)
                 val correo = snapshot.child("email").getValue(String::class.java)
-                val grado = snapshot.child("directorCurso").getValue(String::class.java)
-                val asignatura = snapshot.child("asignatura").getValue(String::class.java)
+                val rol = snapshot.child("tipoUsuario").getValue(String::class.java)
 
-                tvName.text = nombre ?: "Profesor"
+                // Obtener UID del estudiante asignado
+                val uidEstudiante = snapshot.child("uidEstudianteAsignado").getValue(String::class.java)
+
+                tvName.text = nombre ?: "Acudiente"
                 tvEmail.text = correo ?: "sin correo"
-                tvRol.text = "Profesor del Colegio"
-                tvGrado.text = "Grado asignado: ${grado ?: "No asignado"}"
+                tvRol.text = rol ?: "Acudiente"
 
-                // ⬅️ CAMBIO: ahora leemos "asignatura"
-                tvMaterias.text = "Asignatura: ${asignatura ?: "No registrada"}"
+                if (uidEstudiante != null) {
+                    cargarDatosEstudiante(uidEstudiante)
+                } else {
+                    tvHijos.text = "Hijos asociados: No registrados"
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(
-                    this@ProfileProfe,
+                    this@ProfileAcud,
                     "Error cargando datos: ${error.message}",
                     Toast.LENGTH_SHORT
                 ).show()
@@ -84,7 +88,7 @@ class ProfileProfe : AppCompatActivity() {
 
         db.addValueEventListener(userListener!!)
 
-        // 🔹 Botones
+        // Botones
         btnEdit.setOnClickListener {
             Toast.makeText(this, "Editar perfil (pendiente)", Toast.LENGTH_SHORT).show()
         }
@@ -93,18 +97,38 @@ class ProfileProfe : AppCompatActivity() {
             logoutClean()
         }
 
-        // 🔹 Barra inferior
+        // Bottom Navbar
         val bottom = findViewById<BottomNavigationView>(R.id.bottomNav)
         bottom.selectedItemId = R.id.nav_profile
+
         bottom.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_home -> { startActivity(Intent(this, InicioProf::class.java)); true }
-                R.id.nav_courses -> { startActivity(Intent(this, CursosProf::class.java)); true }
+                R.id.nav_home -> { startActivity(Intent(this, InicioAcudiente::class.java)); true }
                 R.id.nav_calendar -> { startActivity(Intent(this, Calendario::class.java)); true }
-                R.id.nav_notifications -> { startActivity(Intent(this, ForoProfesor::class.java)); true }
+                R.id.nav_notifications -> { startActivity(Intent(this, Comunicados::class.java)); true }
                 R.id.nav_profile -> true
                 else -> false
             }
+        }
+    }
+
+    // 🔹 FUNCIÓN PARA CARGAR EL ESTUDIANTE DESDE "usuarios/uid"
+    private fun cargarDatosEstudiante(uid: String) {
+        val ref = FirebaseDatabase.getInstance().reference
+            .child("usuarios")
+            .child(uid)
+
+        ref.get().addOnSuccessListener { snap ->
+            if (snap.exists()) {
+                val nombreH = snap.child("nombre").getValue(String::class.java) ?: "Sin nombre"
+                val gradoH = snap.child("grado").getValue(String::class.java) ?: "Sin grado"
+
+                tvHijos.text = "Hijo asignado:\n• $nombreH (Grado $gradoH)"
+            } else {
+                tvHijos.text = "Hijo asignado: No encontrado"
+            }
+        }.addOnFailureListener {
+            tvHijos.text = "Hijo asignado: Error al cargar"
         }
     }
 
@@ -134,3 +158,6 @@ class ProfileProfe : AppCompatActivity() {
         finish()
     }
 }
+
+
+

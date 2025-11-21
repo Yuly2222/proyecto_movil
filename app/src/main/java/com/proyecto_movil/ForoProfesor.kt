@@ -15,7 +15,9 @@ data class MensajeForo(
     val texto: String? = null,
     val remitenteUid: String? = null,
     val remitenteNombre: String? = null,
-    val timestamp: Long = System.currentTimeMillis()
+    val timestamp: Long = System.currentTimeMillis(),
+    val hora: String? = null,
+    val fecha: String? = null
 )
 
 class ForoProfesor : AppCompatActivity() {
@@ -45,7 +47,6 @@ class ForoProfesor : AppCompatActivity() {
         contenedorMensajes = findViewById(R.id.contenedorMensajes)
         scrollMensajes = findViewById(R.id.scrollMensajes)
 
-        // Evita enviar sin foro cargado
         btnEnviar.isEnabled = false
 
         tvVolver.setOnClickListener {
@@ -77,7 +78,6 @@ class ForoProfesor : AppCompatActivity() {
     private fun buscarForoPorGrado(gradoNormalizado: String) {
         val uid = auth.currentUser?.uid ?: return
 
-        // 1) Buscar por uidJefe (recomendado, directo)
         db.reference.child("foros")
             .orderByChild("uidJefe")
             .equalTo(uid)
@@ -90,7 +90,6 @@ class ForoProfesor : AppCompatActivity() {
                     return@addOnSuccessListener
                 }
 
-                // 2) Fallback: buscar por grado (p.ej. "10")
                 db.reference.child("foros")
                     .orderByChild("grado")
                     .equalTo(gradoNormalizado)
@@ -120,6 +119,9 @@ class ForoProfesor : AppCompatActivity() {
         btnEnviar.isEnabled = true
     }
 
+    // -------------------------------------------------------------------------
+    // 🔥 BOTÓN ENVIAR: guarda texto, remitente, hora y fecha
+    // -------------------------------------------------------------------------
     private fun configurarBotonEnviar() {
         btnEnviar.setOnClickListener {
             val texto = editMensaje.text.toString().trim()
@@ -128,22 +130,30 @@ class ForoProfesor : AppCompatActivity() {
                 return@setOnClickListener
             }
             if (foroId == null) {
-                Toast.makeText(this, "No se encontró el foro, recarga la pantalla", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "No se encontró el foro", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
-            val idMensaje = db.reference.child("foros").child(foroId!!).child("mensajes").push().key ?: return@setOnClickListener
+            val horaActual = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
+            val fechaActual = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+
+            val idMensaje = db.reference.child("foros").child(foroId!!).child("mensajes")
+                .push().key ?: return@setOnClickListener
+
             val mensaje = MensajeForo(
                 idMensaje = idMensaje,
                 texto = texto,
                 remitenteUid = auth.currentUser?.uid,
-                remitenteNombre = nombreProfesor
+                remitenteNombre = nombreProfesor,
+                timestamp = System.currentTimeMillis(),
+                hora = horaActual,
+                fecha = fechaActual
             )
 
-            db.reference.child("foros").child(foroId!!).child("mensajes").child(idMensaje).setValue(mensaje)
+            db.reference.child("foros").child(foroId!!).child("mensajes").child(idMensaje)
+                .setValue(mensaje)
                 .addOnSuccessListener {
                     editMensaje.text.clear()
-                    Toast.makeText(this, "Mensaje enviado ✅", Toast.LENGTH_SHORT).show()
                     scrollMensajes.postDelayed({
                         scrollMensajes.fullScroll(ScrollView.FOCUS_DOWN)
                     }, 150)
@@ -154,22 +164,35 @@ class ForoProfesor : AppCompatActivity() {
         }
     }
 
-    /** Lee mensajes ordenados por timestamp y los pinta como burbujas */
+    // -------------------------------------------------------------------------
+    // 🔥 LECTURA DE MENSAJES + HEADER DE FECHA (estilo WhatsApp)
+    // -------------------------------------------------------------------------
     private fun escucharMensajes() {
         if (foroId == null) return
         val ref = db.reference.child("foros").child(foroId!!).child("mensajes")
 
         ref.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+
                 contenedorMensajes.removeAllViews()
+                var ultimaFechaMostrada = ""
 
                 for (msgSnap in snapshot.children) {
+
                     val texto = msgSnap.child("texto").getValue(String::class.java) ?: ""
                     val remitente = msgSnap.child("remitenteNombre").getValue(String::class.java) ?: "Anónimo"
                     val uid = msgSnap.child("remitenteUid").getValue(String::class.java)
                     val ts = msgSnap.child("timestamp").getValue(Long::class.java) ?: 0L
+                    val hora = msgSnap.child("hora").getValue(String::class.java) ?: ""
+                    val fecha = msgSnap.child("fecha").getValue(String::class.java) ?: ""
 
-                    agregarBurbujaMensaje(texto, remitente, uid == auth.currentUser?.uid, ts)
+                    // 🔥 Si es una nueva fecha → agregar encabezado
+                    if (fecha != ultimaFechaMostrada) {
+                        insertarHeaderFecha(formatearFecha(fecha))
+                        ultimaFechaMostrada = fecha
+                    }
+
+                    agregarBurbujaMensaje(texto, remitente, uid == auth.currentUser?.uid, ts, hora)
                 }
 
                 scrollMensajes.post { scrollMensajes.fullScroll(ScrollView.FOCUS_DOWN) }
@@ -181,12 +204,40 @@ class ForoProfesor : AppCompatActivity() {
         })
     }
 
-    /** Dibuja una burbuja alineada según sea propio/ajeno */
+    // -------------------------------------------------------------------------
+    // 🔥 FORMATO DE FECHA (estilo WhatsApp)
+    // -------------------------------------------------------------------------
+    private fun formatearFecha(fechaISO: String): String {
+        return try {
+            val sdfIn = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val sdfOut = SimpleDateFormat("d MMMM yyyy", Locale("es"))
+            val date = sdfIn.parse(fechaISO)
+            sdfOut.format(date!!)
+        } catch (e: Exception) {
+            fechaISO
+        }
+    }
+
+    private fun insertarHeaderFecha(fecha: String) {
+        val tv = TextView(this).apply {
+            text = fecha
+            textSize = 13f
+            setTextColor(0xFF6B7280.toInt())
+            gravity = Gravity.CENTER
+            setPadding(0, dp(10), 0, dp(10))
+        }
+        contenedorMensajes.addView(tv)
+    }
+
+    // -------------------------------------------------------------------------
+    // 🔥 BURBUJA DE MENSAJE NORMAL
+    // -------------------------------------------------------------------------
     private fun agregarBurbujaMensaje(
         texto: String,
         remitente: String,
         esPropio: Boolean,
-        timestamp: Long
+        timestamp: Long,
+        hora: String
     ) {
         val fila = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
@@ -199,7 +250,11 @@ class ForoProfesor : AppCompatActivity() {
 
         val burbuja = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            background = if (esPropio) getDrawable(R.drawable.bg_bubble_me) else getDrawable(R.drawable.bg_bubble_other)
+            background = if (esPropio)
+                getDrawable(R.drawable.bg_bubble_me)
+            else
+                getDrawable(R.drawable.bg_bubble_other)
+
             setPadding(dp(12), dp(8), dp(12), dp(8))
             layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 0.8f)
         }
@@ -207,21 +262,38 @@ class ForoProfesor : AppCompatActivity() {
         val tvRem = TextView(this).apply {
             text = remitente
             textSize = 12f
-            setTextColor(if (esPropio) 0xFFFFFFFF.toInt() else 0xFF6B7280.toInt()) // blanco / gris
+            setTextColor(
+                if (esPropio) 0xFFFFFFFF.toInt()
+                else 0xFF6B7280.toInt()
+            )
         }
 
         val tvTxt = TextView(this).apply {
             text = texto
             textSize = 15f
-            setTextColor(if (esPropio) 0xFFFFFFFF.toInt() else 0xFF111827.toInt()) // blanco / gris oscuro
+            setTextColor(
+                if (esPropio) 0xFFFFFFFF.toInt()
+                else 0xFF111827.toInt()
+            )
+        }
+
+        val tvHora = TextView(this).apply {
+            text = hora
+            textSize = 11f
+            setTextColor(
+                if (esPropio) 0xFFE5E7EB.toInt()
+                else 0xFF9CA3AF.toInt()
+            )
+            gravity = Gravity.END
         }
 
         burbuja.addView(tvRem)
         burbuja.addView(tvTxt)
+        burbuja.addView(tvHora)
         fila.addView(burbuja)
         contenedorMensajes.addView(fila)
     }
 
-    private fun dp(value: Int) = (value * resources.displayMetrics.density).toInt()
+    private fun dp(v: Int) = (v * resources.displayMetrics.density).toInt()
 }
 

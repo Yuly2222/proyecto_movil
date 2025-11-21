@@ -8,7 +8,7 @@
     android:padding="16dp"
     tools:context=".ForoAcudiente">
 
-    <!-- Volver -->
+    <!-- Botón Volver -->
     <TextView
         android:id="@+id/tvVolver"
         android:layout_width="wrap_content"
@@ -16,9 +16,9 @@
         android:text="← Volver"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:padding="4dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp" />
 
     <!-- Título -->
     <TextView
@@ -28,19 +28,19 @@
         android:text="Foro del Grado"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:gravity="center"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp" />
 
-    <!-- Lista de mensajes (solo lectura) -->
+    <!-- Lista de mensajes -->
     <ScrollView
         android:id="@+id/scrollMensajes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:fillViewport="true"
-        android:background="@drawable/bg_card"
-        android:padding="12dp">
+        android:padding="12dp"
+        android:background="@drawable/bg_card">
 
         <LinearLayout
             android:id="@+id/contenedorMensajes"
@@ -49,14 +49,35 @@
             android:orientation="vertical" />
     </ScrollView>
 
-    <!-- Barra inferior informativa (no editable) -->
-    <TextView
+    <!-- ⚠️ MENSAJE INFERIOR MEJORADO – SOLO LECTURA -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Solo lectura: este foro es para comunicados del profesor."
-        android:textSize="12sp"
-        android:textColor="@color/white"
-        android:alpha="0.8"
-        android:paddingTop="8dp"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="#66000000"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"
+        android:elevation="6dp">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_warning"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:id="@+id/tvSoloLectura"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="SOLO LECTURA: Este foro es únicamente para comunicados del profesor."
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:alpha="0.95"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </LinearLayout>
+

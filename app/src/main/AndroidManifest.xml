@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_movil">
         <activity
+            android:name=".ProfileAcud"
+            android:exported="false" />
+        <activity
             android:name=".ForoAcudiente"
             android:exported="false" />
         <activity
