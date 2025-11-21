@@ -60,18 +60,6 @@
             android:clipToPadding="false"
             android:paddingBottom="8dp"/>
 
-        <!-- Botón Agregar Curso -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAgregarCurso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Agregar Curso"
-            android:textColor="@color/white"
-            android:layout_marginTop="12dp"
-            android:padding="16dp"
-            android:backgroundTint="@color/purple_500"
-            app:cornerRadius="24dp"
-            app:elevation="6dp"/>
     </LinearLayout>
 
     <!-- 🔹 Barra inferior -->

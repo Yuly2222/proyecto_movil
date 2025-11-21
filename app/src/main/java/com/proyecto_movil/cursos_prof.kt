@@ -2,12 +2,12 @@ package com.proyecto_movil
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -17,7 +17,8 @@ class CursosProf : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var rvCursos: RecyclerView
     private lateinit var bottomNav: BottomNavigationView
-    private lateinit var btnAgregarCurso: MaterialButton
+    private lateinit var tvNombreProfesor: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,8 @@ class CursosProf : AppCompatActivity() {
 
         rvCursos = findViewById(R.id.rvCursos)
         rvCursos.layoutManager = LinearLayoutManager(this)
+
+        tvNombreProfesor = findViewById(R.id.tvNombreProfesor)
 
         bottomNav = findViewById(R.id.bottomNav)
         bottomNav.selectedItemId = R.id.nav_courses
@@ -54,12 +57,6 @@ class CursosProf : AppCompatActivity() {
             }
         }
 
-        btnAgregarCurso = findViewById(R.id.btnAgregarCurso)
-        btnAgregarCurso.setOnClickListener {
-            // Abrir la actividad CrearClase
-            startActivity(Intent(this, CrearClase::class.java))
-        }
-
         cargarCursosProfesor()
     }
 
@@ -67,14 +64,19 @@ class CursosProf : AppCompatActivity() {
         val user = auth.currentUser ?: return
         val uidProfesor = user.uid
 
+        // 🔹 Cargar nombre y apellido del profesor
+        cargarNombreProfesor(uidProfesor)
+
         val clasesRef = database.getReference("clases")
         clasesRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+
                 val listaCursos = mutableListOf<Curso>()
 
                 for (claseSnap in snapshot.children) {
                     val uid = claseSnap.child("uidProfesor").getValue(String::class.java)
                     if (uid == uidProfesor) {
+
                         val nombre = claseSnap.child("nombre").getValue(String::class.java) ?: ""
                         val idClase = claseSnap.child("idClase").getValue(String::class.java) ?: ""
                         val horario = claseSnap.child("descripcion").getValue(String::class.java) ?: ""
@@ -91,7 +93,6 @@ class CursosProf : AppCompatActivity() {
                     ).show()
                 }
 
-                // 🔹 Aquí se asigna el adapter, ahora cada item es clickeable
                 rvCursos.adapter = CursoAdapter(listaCursos)
             }
 
@@ -99,6 +100,28 @@ class CursosProf : AppCompatActivity() {
                 Toast.makeText(
                     this@CursosProf,
                     "Error al cargar clases: ${error.message}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        })
+    }
+
+    private fun cargarNombreProfesor(uidProfesor: String) {
+        val userRef = database.getReference("usuarios").child(uidProfesor)
+
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                val nombre = snapshot.child("nombre").getValue(String::class.java) ?: "Profesor"
+                val apellido = snapshot.child("apellido").getValue(String::class.java) ?: ""
+
+                tvNombreProfesor.text = "Profesor: $nombre $apellido"
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(
+                    this@CursosProf,
+                    "Error al cargar nombre: ${error.message}",
                     Toast.LENGTH_LONG
                 ).show()
             }

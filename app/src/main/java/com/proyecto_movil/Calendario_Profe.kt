@@ -3,10 +3,12 @@ package com.proyecto_movil
 import android.content.Intent
 import android.os.Bundle
 import android.widget.CalendarView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.*
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -16,19 +18,17 @@ class Calendario_Profe : AppCompatActivity() {
     private lateinit var rv: RecyclerView
     private lateinit var adapter: EventoAdapter
     private lateinit var calendarView: CalendarView
+    private lateinit var db: FirebaseDatabase
 
-    // Simulación de datos
-    private val eventos = listOf(
-        Evento(LocalDate.of(2025, 10, 6).toEpochDay(), "Exposición Redes", "Edif. B, Aula 203", "08:00"),
-        Evento(LocalDate.of(2025, 10, 6).toEpochDay(), "Entrega Parcial", "Aula Virtual", "23:59"),
-        Evento(LocalDate.of(2025, 10, 7).toEpochDay(), "Reunión IEEE", "Sala 4", "16:00"),
-    )
+    // Lista que llenaremos con los eventos de Firebase
+    private val eventos = mutableListOf<Evento>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendario_profe)
+
+        db = FirebaseDatabase.getInstance()
 
         calendarView = findViewById(R.id.calendarView)
         rv = findViewById(R.id.rvEventos)
@@ -37,7 +37,7 @@ class Calendario_Profe : AppCompatActivity() {
         rv.layoutManager = LinearLayoutManager(this)
         rv.adapter = adapter
 
-        // === Tu código de navegación inferior ===
+        // === Navegación inferior ===
         val bottom = findViewById<BottomNavigationView>(R.id.bottomNav)
         bottom.selectedItemId = R.id.nav_calendar
 
@@ -67,17 +67,46 @@ class Calendario_Profe : AppCompatActivity() {
                 else -> false
             }
         }
-        // =======================================
+        // ===========================
 
-        // 1) Cargar eventos del día mostrado inicialmente
+        // 🔥 Cargar eventos desde Firebase
+        cargarEventosDeFirebase()
+
+        // 🔥 Cargar eventos del día inicial
         val initialDay = millisToEpochDay(calendarView.date)
         renderForDay(initialDay)
 
-        // 2) Cambiar al seleccionar fecha
+        // 🔥 Cambiar al seleccionar fecha
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val day = LocalDate.of(year, month + 1, dayOfMonth).toEpochDay()
             renderForDay(day)
         }
+    }
+
+    private fun cargarEventosDeFirebase() {
+        val ref = db.getReference("eventos")
+
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                eventos.clear()
+
+                for (ev in snapshot.children) {
+                    val evento = ev.getValue(Evento::class.java)
+                    if (evento != null) {
+                        eventos.add(evento)
+                    }
+                }
+
+                // Actualiza los eventos del día seleccionado
+                val currentDay = millisToEpochDay(calendarView.date)
+                renderForDay(currentDay)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@Calendario_Profe, "Error: ${error.message}", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     private fun renderForDay(epochDay: Long) {

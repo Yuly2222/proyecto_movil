@@ -1,8 +1,10 @@
 package com.proyecto_movil
 
 data class Evento(
-    val fechaEpochDay: Long, // Día en epoch
-    val titulo: String,
-    val detalle: String,
-    val hora: String
-)
+    var fechaEpochDay: Long = 0,
+    var titulo: String = "",
+    var detalle: String = "",
+    var hora: String = ""
+) {
+    constructor() : this(0, "", "", "")
+}
