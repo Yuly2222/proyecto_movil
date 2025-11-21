@@ -3,15 +3,39 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     android:background="@drawable/gradient_bg"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".InicioAdminActivity">
 
+    <!-- 🔵 BARRA SUPERIOR -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/adminToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#1A237E"
+        android:paddingHorizontal="16dp"
+        app:title="CampusApp Admin"
+        app:titleTextColor="@android:color/white"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Title"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <!-- Botón Cerrar Sesión -->
+        <TextView
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="40px"
+            android:background="@android:color/transparent"
+            android:text="Cerrar sesión"
+            android:textColor="@color/errorRed"
+            android:textStyle="bold"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- CONTENIDO PRINCIPAL -->
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -19,16 +43,16 @@
         android:columnCount="2"
         android:rowCount="2"
         android:alignmentMode="alignMargins"
-        android:useDefaultMargins="true">
+        android:useDefaultMargins="true"
+        android:padding="12dp">
 
         <!-- Crear Usuario -->
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_columnWeight="1"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
             android:backgroundTint="@android:color/white">
 
             <LinearLayout
@@ -36,8 +60,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:padding="16dp"
-                android:foreground="?attr/selectableItemBackground">
+                android:padding="18dp">
 
                 <ImageView
                     android:id="@+id/crearUsuario"
@@ -52,19 +75,18 @@
                     android:text="Crear Usuario"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
-                    android:textSize="15sp"
-                    android:layout_marginTop="10dp"/>
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Dashboard -->
+        <!-- Administrar Clases -->
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_columnWeight="1"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
             android:backgroundTint="@android:color/white">
 
             <LinearLayout
@@ -72,8 +94,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:padding="16dp"
-                android:foreground="?attr/selectableItemBackground">
+                android:padding="18dp">
 
                 <ImageView
                     android:id="@+id/dashboard"
@@ -88,19 +109,18 @@
                     android:text="Administrar Clases"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
-                    android:textSize="15sp"
-                    android:layout_marginTop="10dp"/>
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Creación de Evento -->
+        <!-- Crear Evento -->
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_columnWeight="1"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
             android:backgroundTint="@android:color/white">
 
             <LinearLayout
@@ -108,8 +128,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:padding="16dp"
-                android:foreground="?attr/selectableItemBackground">
+                android:padding="18dp">
 
                 <ImageView
                     android:id="@+id/crearEvento"
@@ -121,22 +140,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Creación de Evento"
+                    android:text="Crear Evento"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
-                    android:textSize="15sp"
-                    android:layout_marginTop="10dp"/>
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Creación de Grupos -->
+        <!-- Foro -->
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_columnWeight="1"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
             android:backgroundTint="@android:color/white">
 
             <LinearLayout
@@ -144,8 +162,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:padding="16dp"
-                android:foreground="?attr/selectableItemBackground">
+                android:padding="18dp">
 
                 <ImageView
                     android:id="@+id/foro"
@@ -160,12 +177,11 @@
                     android:text="Foro Académico"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
-                    android:textSize="15sp"
-                    android:layout_marginTop="10dp"/>
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
     </GridLayout>
-
-
 
 </LinearLayout>

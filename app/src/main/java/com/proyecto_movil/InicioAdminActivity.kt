@@ -3,8 +3,10 @@ package com.proyecto_movil
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class InicioAdminActivity : AppCompatActivity() {
 
@@ -21,10 +23,18 @@ class InicioAdminActivity : AppCompatActivity() {
         val btnDashboard = findViewById<ImageView>(R.id.dashboard)
         val btnCrearEvento = findViewById<ImageView>(R.id.crearEvento)
         val btnCrearGrupo = findViewById<ImageView>(R.id.foro)
+        val btnLogout = findViewById<TextView>(R.id.btnLogout)
 
         // Navegación a RegistroActivity
         btnCrearUsuario.setOnClickListener {
             val intent = Intent(this, RegistroAdminActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnLogout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, Bienvenida::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 
